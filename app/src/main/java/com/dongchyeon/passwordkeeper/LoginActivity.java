@@ -32,8 +32,8 @@ public class LoginActivity extends AppCompatActivity {
 
         prefs = getSharedPreferences("Pref", MODE_PRIVATE);
 
-        inputPassword = findViewById(R.id.intputPassword);
-        loginButton = findViewById(R.id.loginButton);
+        inputPassword = findViewById(R.id.intput_password);
+        loginButton = findViewById(R.id.login_button);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

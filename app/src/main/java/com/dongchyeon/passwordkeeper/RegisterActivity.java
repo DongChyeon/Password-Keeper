@@ -26,9 +26,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         prefs = getSharedPreferences("Pref", MODE_PRIVATE);
 
-        newPassword = findViewById(R.id.newPassword);
-        confirmPassword = findViewById(R.id.confirmPassword);
-        confirmButton = findViewById(R.id.confirmButton);
+        newPassword = findViewById(R.id.new_password);
+        confirmPassword = findViewById(R.id.confirm_password);
+        confirmButton = findViewById(R.id.confirm_button);
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
