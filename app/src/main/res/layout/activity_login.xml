@@ -27,16 +27,19 @@
             android:layout_weight="1"
             android:hint="비밀번호를 입력하세요."
             android:inputType="textPassword"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF" />
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/textHintColor" />
 
         <Button
             android:id="@+id/login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:text="로그인" />
+            android:background="#6B7775"
+            android:text="로그인"
+            android:textColor="@color/textColor" />
     </LinearLayout>
 
     <TextView
@@ -45,6 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="최초 로그인 시 입력하는 비밀번호가 비밀번호로 설정됩니다."
+        android:textColor="@color/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />

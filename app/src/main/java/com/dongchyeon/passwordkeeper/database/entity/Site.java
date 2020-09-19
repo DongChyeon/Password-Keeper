@@ -19,6 +19,14 @@ public class Site {
         this.url = url;
     }
 
+    public int getEid() {
+        return eid;
+    }
+
+    public void setEid(int eid) {
+        this.eid = eid;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -49,5 +57,16 @@ public class Site {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "Site{" +
+                "eid=" + eid +
+                ", title='" + title + '\'' +
+                ", id='" + id + '\'' +
+                ", password='" + password + '\'' +
+                ", url='" + url + '\'' +
+                '}';
     }
 }

@@ -9,15 +9,17 @@ import androidx.room.RoomDatabase;
 import com.dongchyeon.passwordkeeper.database.dao.SiteDao;
 import com.dongchyeon.passwordkeeper.database.entity.Site;
 
-@Database(entities = {Site.class}, version = 1)
+@Database(entities = {Site.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract SiteDao siteDao();
 
-    private static AppDatabase instance;
+    private static volatile AppDatabase instance;
 
-    public static AppDatabase getInstance(Context context) {
+    public static AppDatabase getInstance(final Context context) {
         if (instance == null) {
-            instance = Room.databaseBuilder(context, AppDatabase.class, "app-db").build();
+            synchronized (AppDatabase.class) {
+                instance = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "app-db").build();
+            }
         }
         return instance;
     }

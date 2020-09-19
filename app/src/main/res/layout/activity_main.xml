@@ -50,7 +50,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="125dp"
         android:text="사이트 계정 추가"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/add_site_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

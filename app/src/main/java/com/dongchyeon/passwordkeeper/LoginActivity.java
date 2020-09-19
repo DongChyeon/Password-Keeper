@@ -8,7 +8,6 @@ import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -34,18 +33,15 @@ public class LoginActivity extends AppCompatActivity {
 
         inputPassword = findViewById(R.id.intput_password);
         loginButton = findViewById(R.id.login_button);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if ((inputPassword.getText().toString()).equals(prefs.getString("password", null))) {
-                    Toast.makeText(getApplicationContext(), "인증 성공", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), "비밀번호가 틀립니다.", Toast.LENGTH_SHORT).show();
-                }
+        loginButton.setOnClickListener(view -> {
+            if ((inputPassword.getText().toString()).equals(prefs.getString("password", null))) {
+                Toast.makeText(getApplicationContext(), "인증 성공", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+            else {
+                Toast.makeText(getApplicationContext(), "비밀번호가 틀립니다.", Toast.LENGTH_SHORT).show();
             }
         }); // prefs에 저장된 비밀번호(가입할 때 저장한 비밀번호)를 입력했을 시 로그인
 

@@ -1,25 +1,28 @@
 package com.dongchyeon.passwordkeeper;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.dongchyeon.passwordkeeper.database.AppDatabase;
+import com.dongchyeon.passwordkeeper.database.dao.SiteDao;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
     private AppDatabase appDatabase;
+    private SiteDao siteDao;
 
     private FloatingActionButton addButton;
     private FloatingActionButton addSiteButton;
     private TextView addSiteText;
     private RecyclerView recyclerView;
+    private SiteAdapter adapter;
 
     private Animation fab_open;
     private Animation fab_close;
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         appDatabase = AppDatabase.getInstance(this);
+        siteDao = appDatabase.siteDao();
 
         initUI();
     }
@@ -47,12 +51,16 @@ public class MainActivity extends AppCompatActivity {
         addSiteButton.setClickable(false);
         addSiteText.startAnimation(fab_close);
 
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openAndCloseButton();
-            }
+        addButton.setOnClickListener(view -> openAndCloseButton());
+        addSiteButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), SitePostActivity.class);
+            startActivity(intent);
         });
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        adapter = new SiteAdapter(appDatabase);
+        recyclerView.setAdapter(adapter);
+        siteDao.getAll().observe(this, data -> adapter.setItems(data));
     }
 
     private void openAndCloseButton() {
