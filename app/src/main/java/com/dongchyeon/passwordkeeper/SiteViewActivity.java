@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.dongchyeon.passwordkeeper.database.AppDatabase;
@@ -22,7 +21,7 @@ public class SiteViewActivity extends AppCompatActivity {
     private TextView idView;
     private TextView passwordView;
     private TextView urlView;
-    private FloatingActionButton EditButton;
+    private FloatingActionButton editButton;
     private FloatingActionButton deleteButton;
 
     @Override
@@ -57,8 +56,8 @@ public class SiteViewActivity extends AppCompatActivity {
         urlView.setText(url);
 
         // 버튼 세팅
-        EditButton = findViewById(R.id.confirm_button);
-        EditButton.setOnClickListener(view -> {
+        editButton = findViewById(R.id.edit_button);
+        editButton.setOnClickListener(view -> {
             Intent intent2 = new Intent(getApplicationContext(), SiteEditActivity.class);
 
             intent2.putExtra("eid", eid);
@@ -67,7 +66,7 @@ public class SiteViewActivity extends AppCompatActivity {
             intent2.putExtra("password", password);
             intent2.putExtra("url", url);
 
-            startActivity(intent);
+            startActivity(intent2);
             finish();
         });
 
@@ -78,9 +77,10 @@ public class SiteViewActivity extends AppCompatActivity {
         });
     }
 
+    // Site 아이템 삽입
     private void delete(int eid) {
-        Runnable addRunnable = () -> siteDao.delete(siteDao.getItemById(eid));
+        Runnable addRunnable = () -> siteDao.delete(siteDao.getItemByEid(eid));
         Executor executor = Executors.newSingleThreadExecutor();
         executor.execute(addRunnable);
-    }   // Site 아이템 삽입
+    }
 }

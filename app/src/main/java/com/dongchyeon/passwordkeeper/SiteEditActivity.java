@@ -41,16 +41,10 @@ public class SiteEditActivity extends AppCompatActivity {
         passwordEdit = findViewById(R.id.password_edit);
         urlEdit = findViewById(R.id.url_edit);
 
-        confirmButton = findViewById(R.id.confirm_button);
-        confirmButton.setOnClickListener(view -> {
-            Site site = new Site(titleEdit.getText().toString(), idEdit.getText().toString(), passwordEdit.getText().toString(), urlEdit.getText().toString());
-            insert(site);
-            finish();
-        });
-
+        // SiteViewActivity로부터 인텐트를 넘겨받음
         Intent intent = getIntent();
 
-        int eid = intent.getIntExtra("eid", 0);
+        int eid = intent.getIntExtra("eid", -1);
         String title = intent.getStringExtra("title");
         String id = intent.getStringExtra("id");
         String password = intent.getStringExtra("password");
@@ -60,11 +54,38 @@ public class SiteEditActivity extends AppCompatActivity {
         idEdit.setText(id);
         passwordEdit.setText(password);
         urlEdit.setText(url);
+
+        // 버튼 세팅
+        confirmButton = findViewById(R.id.confirm_button);
+        confirmButton.setOnClickListener(view -> {
+            if (eid != -1) {
+                update(eid);    // 이미 있는 아이템일 경우 업데이트
+            } else {
+                Site site = new Site(titleEdit.getText().toString(), idEdit.getText().toString(), passwordEdit.getText().toString(), urlEdit.getText().toString());
+                insert(site);
+            }
+            finish();
+        });
     }
 
+    // Site 아이템 삽입
     private void insert(final Site site) {
         Runnable addRunnable = () -> siteDao.insert(site);
         Executor executor = Executors.newSingleThreadExecutor();
         executor.execute(addRunnable);
-    }   // Site 아이템 삽입
+    }
+
+    // Site 아이템 수정
+    private void update(int eid) {
+        Runnable addRunnable = () -> {
+            Site site = siteDao.getItemByEid(eid);
+            site.setTitle(titleEdit.getText().toString());
+            site.setId(idEdit.getText().toString());
+            site.setPassword(passwordEdit.getText().toString());
+            site.setUrl(urlEdit.getText().toString());
+            siteDao.update(site);
+        };
+        Executor executor = Executors.newSingleThreadExecutor();
+        executor.execute(addRunnable);
+    }
 }
