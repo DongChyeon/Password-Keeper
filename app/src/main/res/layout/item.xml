@@ -24,7 +24,7 @@
                 android:layout_height="60dp"
                 android:layout_margin="5dp"
                 android:layout_weight="0"
-                app:srcCompat="@drawable/applogo" />
+                app:srcCompat="@drawable/web" />
 
             <TextView
                 android:id="@+id/title_text"

@@ -24,4 +24,7 @@ public interface SiteDao {
 
     @Delete
     void delete(Site site);
+
+    @Query("SELECT * FROM site WHERE eid = :id")
+    Site getItemById(int id);
 }

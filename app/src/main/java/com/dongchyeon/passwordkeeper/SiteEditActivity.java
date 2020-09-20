@@ -2,6 +2,7 @@ package com.dongchyeon.passwordkeeper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 
@@ -13,7 +14,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-public class SitePostActivity extends AppCompatActivity {
+public class SiteEditActivity extends AppCompatActivity {
     private AppDatabase appDatabase;
     private SiteDao siteDao;
 
@@ -26,7 +27,7 @@ public class SitePostActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_site_post);
+        setContentView(R.layout.activity_site_edit);
 
         initUI();
     }
@@ -46,6 +47,19 @@ public class SitePostActivity extends AppCompatActivity {
             insert(site);
             finish();
         });
+
+        Intent intent = getIntent();
+
+        int eid = intent.getIntExtra("eid", 0);
+        String title = intent.getStringExtra("title");
+        String id = intent.getStringExtra("id");
+        String password = intent.getStringExtra("password");
+        String url = intent.getStringExtra("url");
+
+        titleEdit.setText(title);
+        idEdit.setText(id);
+        passwordEdit.setText(password);
+        urlEdit.setText(url);
     }
 
     private void insert(final Site site) {

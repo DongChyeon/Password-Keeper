@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         addButton.setOnClickListener(view -> openAndCloseButton());
         addSiteButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), SitePostActivity.class);
+            Intent intent = new Intent(getApplicationContext(), SiteEditActivity.class);
             startActivity(intent);
         });
 
@@ -61,6 +61,18 @@ public class MainActivity extends AppCompatActivity {
         adapter = new SiteAdapter(appDatabase);
         recyclerView.setAdapter(adapter);
         siteDao.getAll().observe(this, data -> adapter.setItems(data));
+
+        adapter.setOnItemClickListener((holder, view, position) -> {
+            Intent intent = new Intent(getApplicationContext(), SiteViewActivity.class);
+
+            intent.putExtra("eid", adapter.getItem(position).getEid());
+            intent.putExtra("title", adapter.getItem(position).getTitle());
+            intent.putExtra("id", adapter.getItem(position).getId());
+            intent.putExtra("password", adapter.getItem(position).getPassword());
+            intent.putExtra("url", adapter.getItem(position).getUrl());
+
+            startActivity(intent);
+        });
     }
 
     private void openAndCloseButton() {
