@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private Animation fab_open;
     private Animation fab_close;
 
+    private boolean openFlag;   // 메뉴 열고 닫기 컨트롤
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,9 +49,8 @@ public class MainActivity extends AppCompatActivity {
         addSiteText = findViewById(R.id.add_site_text);
         recyclerView = findViewById(R.id.recycler_view);
 
-        addSiteButton.startAnimation(fab_close);
-        addSiteButton.setClickable(false);
-        addSiteText.startAnimation(fab_close);
+        openFlag = false;
+        openAndCloseButton();
 
         addButton.setOnClickListener(view -> openAndCloseButton());
         addSiteButton.setOnClickListener(view -> {
@@ -76,14 +77,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openAndCloseButton() {
-        if (addSiteButton.isClickable()) {
-            addSiteButton.startAnimation(fab_close);
-            addSiteButton.setClickable(false);
-            addSiteText.startAnimation(fab_close);
-        } else {
+        if (openFlag) {
             addSiteButton.startAnimation(fab_open);
             addSiteButton.setClickable(true);
             addSiteText.startAnimation(fab_open);
+            openFlag = false;
+        } else {
+            addSiteButton.startAnimation(fab_close);
+            addSiteButton.setClickable(false);
+            addSiteText.startAnimation(fab_close);
+            openFlag = true;
         }
     }
 }

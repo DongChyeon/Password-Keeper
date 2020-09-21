@@ -9,7 +9,7 @@
         android:roundIcon="@drawable/applogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SiteViewActivity"></activity>
+        <activity android:name=".SiteViewActivity" />
         <activity android:name=".SiteEditActivity" />
         <activity android:name=".RegisterActivity" />
         <activity

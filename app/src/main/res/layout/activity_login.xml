@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="최초 로그인 시 입력하는 비밀번호가 비밀번호로 설정됩니다."
+        android:text="데이터는 서버가 아닌 어플 내장 DB에 저장됩니다."
         android:textColor="@color/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
