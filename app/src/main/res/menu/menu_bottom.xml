@@ -16,7 +16,7 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/add"
+        android:id="@+id/add_etc"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_edit_24"
         android:title="기타 계정"
