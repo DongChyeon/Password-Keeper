@@ -12,15 +12,26 @@ import android.widget.TextView;
 
 import com.dongchyeon.passwordkeeper.database.AppDatabase;
 import com.dongchyeon.passwordkeeper.database.dao.SiteDao;
+import com.dongchyeon.passwordkeeper.tab.SiteTab;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
     private AppDatabase appDatabase;
     private SiteDao siteDao;
 
+    private SiteTab site;
+
     private FloatingActionButton addButton;
     private FloatingActionButton addSiteButton;
+    private FloatingActionButton addCardButton;
+    private FloatingActionButton addEtcButton;
     private TextView addSiteText;
+    private TextView addCardText;
+    private TextView addEtcText;
+
+    BottomNavigationView bottomNavigationView;
+
     private RecyclerView recyclerView;
     private SiteAdapter adapter;
 
@@ -47,6 +58,11 @@ public class MainActivity extends AppCompatActivity {
         addButton = findViewById(R.id.add_button);
         addSiteButton = findViewById(R.id.add_site_button);
         addSiteText = findViewById(R.id.add_site_text);
+        addCardButton = findViewById(R.id.add_card_button);
+        addCardText = findViewById(R.id.add_card_text);
+        addEtcButton = findViewById(R.id.add_etc_button);
+        addEtcText = findViewById(R.id.add_etc_text);
+
         recyclerView = findViewById(R.id.recycler_view);
 
         openFlag = false;
@@ -81,11 +97,23 @@ public class MainActivity extends AppCompatActivity {
             addSiteButton.startAnimation(fab_open);
             addSiteButton.setClickable(true);
             addSiteText.startAnimation(fab_open);
+            addCardButton.startAnimation(fab_open);
+            addCardButton.setClickable(true);
+            addCardText.startAnimation(fab_open);
+            addEtcButton.startAnimation(fab_open);
+            addEtcButton.setClickable(true);
+            addEtcText.startAnimation(fab_open);
             openFlag = false;
         } else {
             addSiteButton.startAnimation(fab_close);
             addSiteButton.setClickable(false);
             addSiteText.startAnimation(fab_close);
+            addCardButton.startAnimation(fab_close);
+            addCardButton.setClickable(false);
+            addCardText.startAnimation(fab_close);
+            addEtcButton.startAnimation(fab_close);
+            addEtcButton.setClickable(false);
+            addEtcText.startAnimation(fab_close);
             openFlag = true;
         }
     }

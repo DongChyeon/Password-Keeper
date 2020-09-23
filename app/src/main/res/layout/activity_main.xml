@@ -24,7 +24,7 @@
         android:clickable="true"
         app:backgroundTint="@color/colorAccent"
         app:fabSize="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/add" />
 
@@ -36,6 +36,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginBottom="20dp"
         android:clickable="true"
+        android:tint="@color/buttonColor"
         app:backgroundTint="#FFFFFF"
         app:fabSize="normal"
         app:layout_constraintBottom_toTopOf="@+id/add_button"
@@ -51,6 +52,71 @@
         android:layout_marginBottom="125dp"
         android:text="사이트 계정 추가"
         android:textColor="@color/textColor"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toStartOf="@+id/add_site_button" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_card_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        android:tint="@color/buttonColor"
+        app:backgroundTint="#FFFFFF"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/add_site_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_card_24" />
+
+    <TextView
+        android:id="@+id/add_card_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="55dp"
+        android:text="카드 계정 추가"
+        android:textColor="@color/textColor"
+        app:layout_constraintBottom_toTopOf="@+id/add_site_text"
+        app:layout_constraintEnd_toStartOf="@+id/add_card_button" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_etc_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        android:tint="@color/buttonColor"
+        app:backgroundTint="#FFFFFF"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/add_card_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_edit_24" />
+
+    <TextView
+        android:id="@+id/add_etc_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="55dp"
+        android:text="기타 계정 추가"
+        android:textColor="@color/textColor"
+        app:layout_constraintBottom_toTopOf="@+id/add_card_text"
+        app:layout_constraintEnd_toStartOf="@+id/add_etc_button" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemIconTint="@color/textColor"
+        app:itemTextColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_bottom" />
 </androidx.constraintlayout.widget.ConstraintLayout>
