@@ -4,17 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import com.dongchyeon.passwordkeeper.tab.CardTab;
 import com.dongchyeon.passwordkeeper.tab.SiteTab;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    private SiteTab site;
+    private SiteTab siteTab;
+    private CardTab cardTab;
 
     private FloatingActionButton addButton;
     private FloatingActionButton addSiteButton;
@@ -52,25 +55,39 @@ public class MainActivity extends AppCompatActivity {
         addEtcButton = findViewById(R.id.add_etc_button);
         addEtcText = findViewById(R.id.add_etc_text);
 
-        openFlag = false;
-        openAndCloseButton();
+        addSiteButton.setVisibility(View.INVISIBLE);
+        addSiteText.setVisibility(View.INVISIBLE);
+        addCardButton.setVisibility(View.INVISIBLE);
+        addCardText.setVisibility(View.INVISIBLE);
+        addEtcButton.setVisibility(View.INVISIBLE);
+        addEtcText.setVisibility(View.INVISIBLE);
+
+        openFlag = true;
 
         addButton.setOnClickListener(view -> openAndCloseButton());
         addSiteButton.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), SiteEditActivity.class);
             startActivity(intent);
         });
+        addCardButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), CardEditActivity.class);
+            startActivity(intent);
+        });
 
         // 하단 네비게이션 세팅
-        site = new SiteTab();
+        siteTab = new SiteTab();
+        cardTab = new CardTab();
 
-        //getSupportFragmentManager().beginTransaction().replace(R.id.container, site).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, siteTab).commit();
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 item -> {
                     switch (item.getItemId()) {
                         case R.id.add_site:
-                            getSupportFragmentManager().beginTransaction().replace(R.id.container, site).commit();
+                            getSupportFragmentManager().beginTransaction().replace(R.id.container, siteTab).commit();
+                            return true;
+                        case R.id.add_card:
+                            getSupportFragmentManager().beginTransaction().replace(R.id.container, cardTab).commit();
                             return true;
                     }
                     return false;

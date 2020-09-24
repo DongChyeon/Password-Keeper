@@ -6,12 +6,15 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.dongchyeon.passwordkeeper.database.dao.CardDao;
 import com.dongchyeon.passwordkeeper.database.dao.SiteDao;
+import com.dongchyeon.passwordkeeper.database.entity.Card;
 import com.dongchyeon.passwordkeeper.database.entity.Site;
 
-@Database(entities = {Site.class}, version = 1, exportSchema = false)
+@Database(entities = {Site.class, Card.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract SiteDao siteDao();
+    public abstract CardDao cardDao();
 
     private static volatile AppDatabase instance;
 

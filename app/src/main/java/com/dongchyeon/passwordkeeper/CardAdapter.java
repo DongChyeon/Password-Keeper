@@ -1,6 +1,7 @@
 package com.dongchyeon.passwordkeeper;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,20 +12,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dongchyeon.passwordkeeper.database.AppDatabase;
-import com.dongchyeon.passwordkeeper.database.entity.Site;
+import com.dongchyeon.passwordkeeper.database.entity.Card;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SiteAdapter extends RecyclerView.Adapter<SiteAdapter.ViewHolder> implements OnSiteItemClickListener {
+public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> implements OnCardItemClickListener {
 
-    private List<Site> items = new ArrayList<>();
+    private List<Card> items = new ArrayList<>();
     private Context context;
     private AppDatabase db;
 
-    OnSiteItemClickListener listener;
+    OnCardItemClickListener listener;
 
-    public SiteAdapter(AppDatabase db) {
+    public CardAdapter(AppDatabase db) {
         this.db = db;
     }
 
@@ -33,22 +34,22 @@ public class SiteAdapter extends RecyclerView.Adapter<SiteAdapter.ViewHolder> im
         return items.size();
     }
 
-    public List<Site> getSites() { return items; }
+    public List<Card> getCards() { return items; }
 
-    public void setOnItemClickListener(OnSiteItemClickListener listener) {
+    public void setOnItemClickListener(OnCardItemClickListener listener) {
         this.listener = listener;
     }
 
     @NonNull
     @Override
-    public SiteAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public CardAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item, viewGroup, false);
         context = viewGroup.getContext();
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(SiteAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(CardAdapter.ViewHolder viewHolder, int position) {
         viewHolder.onBind(items.get(position), position);
     }
 
@@ -76,18 +77,18 @@ public class SiteAdapter extends RecyclerView.Adapter<SiteAdapter.ViewHolder> im
             });
         }
 
-        public void onBind(Site item, int position) {
-            title.setText(((Site)item).getTitle());
-            icon.setImageResource(R.drawable.web);
+        public void onBind(Card item, int position) {
+            title.setText(((Card)item).getTitle());
+            icon.setImageResource(R.drawable.ic_baseline_card_24);
         }
     }
 
-    public void setItems(List<Site> data) {
+    public void setItems(List<Card> data) {
         items = data;
         notifyDataSetChanged();
     }
 
-    public Site getItem(int position) {
+    public Card getItem(int position) {
         return items.get(position);
     }
 }

@@ -11,6 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SiteViewActivity" />
         <activity android:name=".SiteEditActivity" />
+        <activity android:name=".CardEditActivity" />
+        <activity android:name=".CardViewActivity" />
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".LoginActivity"
