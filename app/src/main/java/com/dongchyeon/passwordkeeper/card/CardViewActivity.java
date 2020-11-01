@@ -1,13 +1,13 @@
-package com.dongchyeon.passwordkeeper;
+package com.dongchyeon.passwordkeeper.card;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.dongchyeon.passwordkeeper.R;
+import com.dongchyeon.passwordkeeper.card.CardEditActivity;
 import com.dongchyeon.passwordkeeper.database.AppDatabase;
 import com.dongchyeon.passwordkeeper.database.dao.CardDao;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

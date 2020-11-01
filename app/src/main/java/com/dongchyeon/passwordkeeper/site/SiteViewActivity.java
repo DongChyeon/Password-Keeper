@@ -1,4 +1,4 @@
-package com.dongchyeon.passwordkeeper;
+package com.dongchyeon.passwordkeeper.site;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.dongchyeon.passwordkeeper.R;
 import com.dongchyeon.passwordkeeper.database.AppDatabase;
 import com.dongchyeon.passwordkeeper.database.dao.SiteDao;
+import com.dongchyeon.passwordkeeper.site.SiteEditActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.concurrent.Executor;

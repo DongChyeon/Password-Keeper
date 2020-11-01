@@ -1,4 +1,4 @@
-package com.dongchyeon.passwordkeeper;
+package com.dongchyeon.passwordkeeper.site;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 
+import com.dongchyeon.passwordkeeper.R;
 import com.dongchyeon.passwordkeeper.database.AppDatabase;
 import com.dongchyeon.passwordkeeper.database.dao.SiteDao;
 import com.dongchyeon.passwordkeeper.database.entity.Site;
