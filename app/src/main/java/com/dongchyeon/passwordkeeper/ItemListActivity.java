@@ -15,6 +15,7 @@ import com.dongchyeon.passwordkeeper.database.dao.CardDao;
 import com.dongchyeon.passwordkeeper.database.dao.SiteDao;
 import com.dongchyeon.passwordkeeper.site.SiteAdapter;
 import com.dongchyeon.passwordkeeper.site.SiteEditActivity;
+import com.dongchyeon.passwordkeeper.site.SiteViewActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ItemListActivity extends AppCompatActivity {
@@ -55,7 +56,7 @@ public class ItemListActivity extends AppCompatActivity {
                 siteDao.getAll().observe(this, data -> siteAdapter.setItems(data));
 
                 siteAdapter.setOnItemClickListener((holder, view, position) -> {
-                    Intent intent = new Intent(getApplicationContext(), CardViewActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), SiteViewActivity.class);
 
                     intent.putExtra("eid", siteAdapter.getItem(position).getEid());
                     intent.putExtra("title", siteAdapter.getItem(position).getTitle());
