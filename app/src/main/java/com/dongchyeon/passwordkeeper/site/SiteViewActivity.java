@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dongchyeon.passwordkeeper.R;
 import com.dongchyeon.passwordkeeper.database.AppDatabase;
@@ -75,6 +76,7 @@ public class SiteViewActivity extends AppCompatActivity {
         deleteButton = findViewById(R.id.delete_button);
         deleteButton.setOnClickListener(view -> {
             delete(eid);
+            Toast.makeText(getApplicationContext(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
             finish();
         });
     }

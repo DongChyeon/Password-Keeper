@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +13,8 @@ import com.dongchyeon.passwordkeeper.R;
 import com.dongchyeon.passwordkeeper.database.AppDatabase;
 import com.dongchyeon.passwordkeeper.database.dao.CardDao;
 import com.dongchyeon.passwordkeeper.database.entity.Card;
+import com.dongchyeon.passwordkeeper.database.entity.Site;
+import com.dongchyeon.passwordkeeper.site.SiteViewActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.w3c.dom.Text;
@@ -22,6 +25,7 @@ import java.util.concurrent.Executors;
 public class CardEditActivity extends AppCompatActivity {
     private AppDatabase appDatabase;
     private CardDao cardDao;
+    private Card card;
 
     private EditText titleEdit;
     private EditText idEdit;
@@ -73,11 +77,12 @@ public class CardEditActivity extends AppCompatActivity {
         confirmButton.setOnClickListener(view -> {
             if (eid != -1) {
                 update(eid);    // 이미 있는 아이템일 경우 업데이트
+                Toast.makeText(getApplicationContext(), "수정되었습니다.", Toast.LENGTH_SHORT).show();
             } else {
-                Card card = new Card(titleEdit.getText().toString(), idEdit.getText().toString(), passwordEdit.getText().toString(), messageEdit.getText().toString(), pinEdit.getText().toString(), companyEdit.getText().toString());
+                card = new Card(titleEdit.getText().toString(), idEdit.getText().toString(), passwordEdit.getText().toString(), messageEdit.getText().toString(), pinEdit.getText().toString(), companyEdit.getText().toString());
                 insert(card);
+                Toast.makeText(getApplicationContext(), "추가되었습니다.", Toast.LENGTH_SHORT).show();
             }
-            finish();
         });
     }
 
@@ -91,7 +96,7 @@ public class CardEditActivity extends AppCompatActivity {
     // Card 아이템 수정
     private void update(int eid) {
         Runnable addRunnable = () -> {
-            Card card = cardDao.getItemByEid(eid);
+            card = cardDao.getItemByEid(eid);
             card.setTitle(titleEdit.getText().toString());
             card.setId(idEdit.getText().toString());
             card.setPassword(passwordEdit.getText().toString());

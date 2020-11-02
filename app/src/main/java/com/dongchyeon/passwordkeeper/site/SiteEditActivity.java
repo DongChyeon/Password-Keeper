@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.dongchyeon.passwordkeeper.R;
 import com.dongchyeon.passwordkeeper.database.AppDatabase;
@@ -18,6 +20,7 @@ import java.util.concurrent.Executors;
 public class SiteEditActivity extends AppCompatActivity {
     private AppDatabase appDatabase;
     private SiteDao siteDao;
+    private Site site;
 
     private EditText titleEdit;
     private EditText idEdit;
@@ -61,11 +64,12 @@ public class SiteEditActivity extends AppCompatActivity {
         confirmButton.setOnClickListener(view -> {
             if (eid != -1) {
                 update(eid);    // 이미 있는 아이템일 경우 업데이트
+                Toast.makeText(getApplicationContext(), "수정되었습니다.", Toast.LENGTH_SHORT).show();
             } else {
-                Site site = new Site(titleEdit.getText().toString(), idEdit.getText().toString(), passwordEdit.getText().toString(), urlEdit.getText().toString());
+                site = new Site(titleEdit.getText().toString(), idEdit.getText().toString(), passwordEdit.getText().toString(), urlEdit.getText().toString());
                 insert(site);
+                Toast.makeText(getApplicationContext(), "추가되었습니다.", Toast.LENGTH_SHORT).show();
             }
-            finish();
         });
     }
 
@@ -79,7 +83,7 @@ public class SiteEditActivity extends AppCompatActivity {
     // Site 아이템 수정
     private void update(int eid) {
         Runnable addRunnable = () -> {
-            Site site = siteDao.getItemByEid(eid);
+            site = siteDao.getItemByEid(eid);
             site.setTitle(titleEdit.getText().toString());
             site.setId(idEdit.getText().toString());
             site.setPassword(passwordEdit.getText().toString());
