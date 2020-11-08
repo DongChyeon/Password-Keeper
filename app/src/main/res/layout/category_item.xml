@@ -29,8 +29,8 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="카테고리"
-            android:textColor="@color/textColor"
-            android:textSize="24sp" />
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="제목"
-                android:textColor="@color/textColor" />
+                android:textColor="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/title_view"
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:ems="10"
-                android:textColor="@color/textColor"
+                android:textColor="@color/colorPrimary"
                 android:textColorHint="@color/textHintColor"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="아이디"
-                android:textColor="@color/textColor" />
+                android:textColor="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/id_view"
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:ems="10"
-                android:textColor="@color/textColor"
+                android:textColor="@color/colorPrimary"
                 android:textColorHint="@color/textHintColor"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="비밀번호"
-                android:textColor="@color/textColor" />
+                android:textColor="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/pw_view"
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:ems="10"
-                android:textColor="@color/textColor"
+                android:textColor="@color/colorPrimary"
                 android:textColorHint="@color/textHintColor"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="사이트 URL"
-                android:textColor="@color/textColor" />
+                android:textColor="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/url_view"
@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:ems="10"
-                android:textColor="@color/textColor"
+                android:textColor="@color/colorPrimary"
                 android:textColorHint="@color/textHintColor"
                 android:textSize="18sp" />
         </LinearLayout>
