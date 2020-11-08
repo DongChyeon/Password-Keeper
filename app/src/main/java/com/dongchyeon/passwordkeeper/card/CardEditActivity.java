@@ -2,9 +2,7 @@ package com.dongchyeon.passwordkeeper.card;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,11 +11,7 @@ import com.dongchyeon.passwordkeeper.R;
 import com.dongchyeon.passwordkeeper.database.AppDatabase;
 import com.dongchyeon.passwordkeeper.database.dao.CardDao;
 import com.dongchyeon.passwordkeeper.database.entity.Card;
-import com.dongchyeon.passwordkeeper.database.entity.Site;
-import com.dongchyeon.passwordkeeper.site.SiteViewActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import org.w3c.dom.Text;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -26,11 +20,11 @@ public class CardEditActivity extends AppCompatActivity {
     private AppDatabase appDatabase;
     private CardDao cardDao;
     private Card card;
-
+    
     private EditText titleEdit;
     private EditText idEdit;
-    private EditText passwordEdit;
-    private EditText messageEdit;
+    private EditText pwEdit;
+    private EditText msgEdit;
     private EditText pinEdit;
     private EditText companyEdit;
     private FloatingActionButton confirmButton;
@@ -46,11 +40,11 @@ public class CardEditActivity extends AppCompatActivity {
     private void initUI() {
         appDatabase = AppDatabase.getInstance(this);
         cardDao = appDatabase.cardDao();
-
+        
         titleEdit = findViewById(R.id.title_edit);
         idEdit = findViewById(R.id.id_edit);
-        passwordEdit = findViewById(R.id.password_edit);
-        messageEdit = findViewById(R.id.message_edit);
+        pwEdit = findViewById(R.id.pw_edit);
+        msgEdit = findViewById(R.id.msg_edit);
         pinEdit = findViewById(R.id.pin_edit);
         companyEdit = findViewById(R.id.company_edit);
 
@@ -60,15 +54,15 @@ public class CardEditActivity extends AppCompatActivity {
         int eid = intent.getIntExtra("eid", -1);
         String title = intent.getStringExtra("title");
         String id = intent.getStringExtra("id");
-        String password = intent.getStringExtra("password");
-        String message = intent.getStringExtra("message");
+        String pw = intent.getStringExtra("pw");
+        String msg = intent.getStringExtra("msg");
         String pin = intent.getStringExtra("pin");
         String company = intent.getStringExtra("company");
 
         titleEdit.setText(title);
         idEdit.setText(id);
-        passwordEdit.setText(password);
-        messageEdit.setText(message);
+        pwEdit.setText(pw);
+        msgEdit.setText(msg);
         pinEdit.setText(pin);
         companyEdit.setText(company);
 
@@ -79,7 +73,7 @@ public class CardEditActivity extends AppCompatActivity {
                 update(eid);    // 이미 있는 아이템일 경우 업데이트
                 Toast.makeText(getApplicationContext(), "수정되었습니다.", Toast.LENGTH_SHORT).show();
             } else {
-                card = new Card(titleEdit.getText().toString(), idEdit.getText().toString(), passwordEdit.getText().toString(), messageEdit.getText().toString(), pinEdit.getText().toString(), companyEdit.getText().toString());
+                card = new Card(titleEdit.getText().toString(), idEdit.getText().toString(), pwEdit.getText().toString(), msgEdit.getText().toString(), pinEdit.getText().toString(), companyEdit.getText().toString());
                 insert(card);
                 Toast.makeText(getApplicationContext(), "추가되었습니다.", Toast.LENGTH_SHORT).show();
             }
@@ -99,8 +93,8 @@ public class CardEditActivity extends AppCompatActivity {
             card = cardDao.getItemByEid(eid);
             card.setTitle(titleEdit.getText().toString());
             card.setId(idEdit.getText().toString());
-            card.setPassword(passwordEdit.getText().toString());
-            card.setMessage(messageEdit.getText().toString());
+            card.setPassword(pwEdit.getText().toString());
+            card.setMessage(msgEdit.getText().toString());
             card.setPin(pinEdit.getText().toString());
             card.setCompany(companyEdit.getText().toString());
             cardDao.update(card);

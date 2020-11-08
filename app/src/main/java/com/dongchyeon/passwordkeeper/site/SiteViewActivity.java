@@ -1,16 +1,17 @@
 package com.dongchyeon.passwordkeeper.site;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.dongchyeon.passwordkeeper.R;
 import com.dongchyeon.passwordkeeper.database.AppDatabase;
 import com.dongchyeon.passwordkeeper.database.dao.SiteDao;
-import com.dongchyeon.passwordkeeper.site.SiteEditActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.concurrent.Executor;
@@ -22,10 +23,15 @@ public class SiteViewActivity extends AppCompatActivity {
 
     private TextView titleView;
     private TextView idView;
-    private TextView passwordView;
+    private TextView pwView;
     private TextView urlView;
     private FloatingActionButton editButton;
     private FloatingActionButton deleteButton;
+
+    private LinearLayout titleLayout;
+    private LinearLayout idLayout;
+    private LinearLayout pwLayout;
+    private LinearLayout urlLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +47,13 @@ public class SiteViewActivity extends AppCompatActivity {
 
         titleView = findViewById(R.id.title_view);
         idView = findViewById(R.id.id_view);
-        passwordView = findViewById(R.id.password_view);
+        pwView = findViewById(R.id.pw_view);
         urlView = findViewById(R.id.url_view);
+
+        titleLayout = findViewById(R.id.title_layout);
+        idLayout = findViewById(R.id.id_layout);
+        pwLayout = findViewById(R.id.pw_layout);
+        urlLayout = findViewById(R.id.url_layout);
 
         // 메인 액티비티로부터 인텐트를 넘겨받음
         Intent intent = getIntent();
@@ -50,13 +61,15 @@ public class SiteViewActivity extends AppCompatActivity {
         int eid = intent.getIntExtra("eid", 0);
         String title = intent.getStringExtra("title");
         String id = intent.getStringExtra("id");
-        String password = intent.getStringExtra("password");
+        String pw = intent.getStringExtra("pw");
         String url = intent.getStringExtra("url");
 
         titleView.setText(title);
         idView.setText(id);
-        passwordView.setText(password);
+        pwView.setText(pw);
         urlView.setText(url);
+
+        hideEmptyItem();
 
         // 버튼 세팅
         editButton = findViewById(R.id.edit_button);
@@ -66,7 +79,7 @@ public class SiteViewActivity extends AppCompatActivity {
             intent2.putExtra("eid", eid);
             intent2.putExtra("title", title);
             intent2.putExtra("id", id);
-            intent2.putExtra("password", password);
+            intent2.putExtra("pw", pw);
             intent2.putExtra("url", url);
 
             startActivity(intent2);
@@ -86,5 +99,21 @@ public class SiteViewActivity extends AppCompatActivity {
         Runnable addRunnable = () -> siteDao.delete(siteDao.getItemByEid(eid));
         Executor executor = Executors.newSingleThreadExecutor();
         executor.execute(addRunnable);
+    }
+
+    // 빈 항목 숨기기
+    private void hideEmptyItem() {
+        if (titleView.getText().toString().equals("")) {
+            titleLayout.setVisibility(View.GONE);
+        }
+        if (idView.getText().toString().equals("")) {
+            idLayout.setVisibility(View.GONE);
+        }
+        if (pwView.getText().toString().equals("")) {
+            pwLayout.setVisibility(View.GONE);
+        }
+        if (urlView.getText().toString().equals("")) {
+            urlLayout.setVisibility(View.GONE);
+        }
     }
 }

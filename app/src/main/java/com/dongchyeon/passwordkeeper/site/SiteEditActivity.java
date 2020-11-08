@@ -1,12 +1,11 @@
 package com.dongchyeon.passwordkeeper.site;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.dongchyeon.passwordkeeper.R;
 import com.dongchyeon.passwordkeeper.database.AppDatabase;
@@ -24,7 +23,7 @@ public class SiteEditActivity extends AppCompatActivity {
 
     private EditText titleEdit;
     private EditText idEdit;
-    private EditText passwordEdit;
+    private EditText pwEdit;
     private EditText urlEdit;
     private FloatingActionButton confirmButton;
 
@@ -42,7 +41,7 @@ public class SiteEditActivity extends AppCompatActivity {
 
         titleEdit = findViewById(R.id.title_edit);
         idEdit = findViewById(R.id.id_edit);
-        passwordEdit = findViewById(R.id.password_edit);
+        pwEdit = findViewById(R.id.pw_edit);
         urlEdit = findViewById(R.id.url_edit);
 
         // SiteViewActivity로부터 인텐트를 넘겨받음
@@ -51,12 +50,12 @@ public class SiteEditActivity extends AppCompatActivity {
         int eid = intent.getIntExtra("eid", -1);
         String title = intent.getStringExtra("title");
         String id = intent.getStringExtra("id");
-        String password = intent.getStringExtra("password");
+        String pw = intent.getStringExtra("pw");
         String url = intent.getStringExtra("url");
 
         titleEdit.setText(title);
         idEdit.setText(id);
-        passwordEdit.setText(password);
+        pwEdit.setText(pw);
         urlEdit.setText(url);
 
         // 버튼 세팅
@@ -66,7 +65,7 @@ public class SiteEditActivity extends AppCompatActivity {
                 update(eid);    // 이미 있는 아이템일 경우 업데이트
                 Toast.makeText(getApplicationContext(), "수정되었습니다.", Toast.LENGTH_SHORT).show();
             } else {
-                site = new Site(titleEdit.getText().toString(), idEdit.getText().toString(), passwordEdit.getText().toString(), urlEdit.getText().toString());
+                site = new Site(titleEdit.getText().toString(), idEdit.getText().toString(), pwEdit.getText().toString(), urlEdit.getText().toString());
                 insert(site);
                 Toast.makeText(getApplicationContext(), "추가되었습니다.", Toast.LENGTH_SHORT).show();
             }
@@ -86,7 +85,7 @@ public class SiteEditActivity extends AppCompatActivity {
             site = siteDao.getItemByEid(eid);
             site.setTitle(titleEdit.getText().toString());
             site.setId(idEdit.getText().toString());
-            site.setPassword(passwordEdit.getText().toString());
+            site.setPassword(pwEdit.getText().toString());
             site.setUrl(urlEdit.getText().toString());
             siteDao.update(site);
         };

@@ -1,11 +1,11 @@
 package com.dongchyeon.passwordkeeper;
 
+import android.content.Intent;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
 
 import com.dongchyeon.passwordkeeper.card.CardAdapter;
 import com.dongchyeon.passwordkeeper.card.CardEditActivity;
@@ -61,7 +61,7 @@ public class ItemListActivity extends AppCompatActivity {
                     intent.putExtra("eid", siteAdapter.getItem(position).getEid());
                     intent.putExtra("title", siteAdapter.getItem(position).getTitle());
                     intent.putExtra("id", siteAdapter.getItem(position).getId());
-                    intent.putExtra("password", siteAdapter.getItem(position).getPassword());
+                    intent.putExtra("pw", siteAdapter.getItem(position).getPassword());
                     intent.putExtra("url", siteAdapter.getItem(position).getUrl());
 
                     startActivity(intent);
@@ -78,8 +78,8 @@ public class ItemListActivity extends AppCompatActivity {
                     intent.putExtra("eid", cardAdapter.getItem(position).getEid());
                     intent.putExtra("title", cardAdapter.getItem(position).getTitle());
                     intent.putExtra("id", cardAdapter.getItem(position).getId());
-                    intent.putExtra("password", cardAdapter.getItem(position).getPassword());
-                    intent.putExtra("message", cardAdapter.getItem(position).getMessage());
+                    intent.putExtra("pw", cardAdapter.getItem(position).getPassword());
+                    intent.putExtra("msg", cardAdapter.getItem(position).getMessage());
                     intent.putExtra("pin", cardAdapter.getItem(position).getPin());
                     intent.putExtra("company", cardAdapter.getItem(position).getCompany());
 

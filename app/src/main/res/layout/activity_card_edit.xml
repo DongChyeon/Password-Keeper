@@ -62,7 +62,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/password_text"
+                android:id="@+id/pw_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -70,7 +70,7 @@
                 android:textColor="@color/textColor" />
 
             <EditText
-                android:id="@+id/password_edit"
+                android:id="@+id/pw_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -82,7 +82,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/message_text"
+                android:id="@+id/msg_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -90,7 +90,7 @@
                 android:textColor="@color/textColor" />
 
             <EditText
-                android:id="@+id/message_edit"
+                android:id="@+id/msg_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"

@@ -17,77 +17,105 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/title_text"
+        <LinearLayout
+            android:id="@+id/title_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="제목"
-            android:textColor="@color/textColor" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/title_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:ems="10"
-            android:textColor="@color/textColor"
-            android:textColorHint="@color/textHintColor"
-            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="제목"
+                android:textColor="@color/textColor" />
 
-        <TextView
-            android:id="@+id/id_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="아이디"
-            android:textColor="@color/textColor" />
+            <TextView
+                android:id="@+id/title_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:ems="10"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/textHintColor"
+                android:textSize="18sp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/id_view"
+        <LinearLayout
+            android:id="@+id/id_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:ems="10"
-            android:textColor="@color/textColor"
-            android:textColorHint="@color/textHintColor"
-            android:textSize="18sp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/password_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="비밀번호"
-            android:textColor="@color/textColor" />
+            <TextView
+                android:id="@+id/id_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="아이디"
+                android:textColor="@color/textColor" />
 
-        <TextView
-            android:id="@+id/password_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:ems="10"
-            android:textColor="@color/textColor"
-            android:textColorHint="@color/textHintColor"
-            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/id_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:ems="10"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/textHintColor"
+                android:textSize="18sp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/url_text"
+        <LinearLayout
+            android:id="@+id/pw_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="사이트 URL"
-            android:textColor="@color/textColor" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/url_view"
+            <TextView
+                android:id="@+id/pw_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="비밀번호"
+                android:textColor="@color/textColor" />
+
+            <TextView
+                android:id="@+id/pw_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:ems="10"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/textHintColor"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/url_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:ems="10"
-            android:textColor="@color/textColor"
-            android:textColorHint="@color/textHintColor"
-            android:textSize="18sp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/url_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="사이트 URL"
+                android:textColor="@color/textColor" />
+
+            <TextView
+                android:id="@+id/url_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:ems="10"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/textHintColor"
+                android:textSize="18sp" />
+        </LinearLayout>
 
     </LinearLayout>
 
