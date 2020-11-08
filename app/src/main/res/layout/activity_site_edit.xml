@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="제목"
-            android:textColor="@color/textColor" />
+            android:textColor="@color/colorPrimary" />
 
         <EditText
             android:id="@+id/title_edit"
@@ -33,7 +33,7 @@
             android:ems="10"
             android:hint="제목을 입력하세요."
             android:inputType="text"
-            android:textColor="@color/textColor"
+            android:textColor="@color/colorPrimary"
             android:textColorHint="@color/textHintColor" />
 
         <TextView
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="아이디"
-            android:textColor="@color/textColor" />
+            android:textColor="@color/colorPrimary" />
 
         <EditText
             android:id="@+id/id_edit"
@@ -52,7 +52,7 @@
             android:ems="10"
             android:hint="아이디를 입력하세요."
             android:inputType="textPersonName"
-            android:textColor="@color/textColor"
+            android:textColor="@color/colorPrimary"
             android:textColorHint="@color/textHintColor" />
 
         <TextView
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="비밀번호"
-            android:textColor="@color/textColor" />
+            android:textColor="@color/colorPrimary" />
 
         <EditText
             android:id="@+id/pw_edit"
@@ -71,7 +71,7 @@
             android:ems="10"
             android:hint="비밀번호를 입력하세요."
             android:inputType="textPersonName"
-            android:textColor="@color/textColor"
+            android:textColor="@color/colorPrimary"
             android:textColorHint="@color/textHintColor" />
 
         <TextView
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="사이트 URL"
-            android:textColor="@color/textColor" />
+            android:textColor="@color/colorPrimary" />
 
         <EditText
             android:id="@+id/url_edit"
@@ -90,7 +90,7 @@
             android:ems="10"
             android:hint="사이트 URL을 입력하세요."
             android:inputType="textPersonName"
-            android:textColor="@color/textColor"
+            android:textColor="@color/colorPrimary"
             android:textColorHint="@color/textHintColor" />
 
     </LinearLayout>

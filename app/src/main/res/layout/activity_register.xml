@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:text="앞으로 사용할 비밀번호를 설정해주세요."
-        android:textColor="@color/textColor"
+        android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:background="@color/colorAccent"
+        android:background="@drawable/black_rounded_rectangle"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
             android:layout_weight="1"
             android:hint="새로운 비밀번호"
             android:inputType="textPassword"
-            android:textColor="@color/textColor"
+            android:textColor="@color/white"
             android:textColorHint="@color/textHintColor" />
 
         <EditText
@@ -48,7 +48,7 @@
             android:layout_margin="5dp"
             android:hint="비밀번호 확인"
             android:inputType="textPassword"
-            android:textColor="@color/textColor"
+            android:textColor="@color/white"
             android:textColorHint="@color/textHintColor" />
 
         <Button
@@ -58,9 +58,9 @@
             android:layout_gravity="center"
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:background="@color/buttonColor"
+            android:background="@drawable/gray_rounded_button"
             android:text="확인"
-            android:textColor="@color/textColor" />
+            android:textColor="@color/colorPrimary" />
 
     </LinearLayout>
 

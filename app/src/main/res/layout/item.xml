@@ -34,7 +34,7 @@
                 android:layout_margin="5dp"
                 android:layout_weight="0"
                 android:text="제목"
-                android:textColor="@color/textColor"
+                android:textColor="@color/colorPrimary"
                 android:textSize="24sp" />
 
         </LinearLayout>

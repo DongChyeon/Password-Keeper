@@ -1,16 +1,16 @@
 package com.dongchyeon.passwordkeeper;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.biometric.BiometricPrompt;
-import androidx.core.content.ContextCompat;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 
 import java.util.concurrent.Executor;
 
@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
 
         prefs = getSharedPreferences("Pref", MODE_PRIVATE);
 
-        inputPassword = findViewById(R.id.intput_password);
+        inputPassword = findViewById(R.id.input_password);
         loginButton = findViewById(R.id.login_button);
         loginButton.setOnClickListener(view -> {
             if ((inputPassword.getText().toString()).equals(prefs.getString("password", null))) {
