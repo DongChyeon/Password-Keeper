@@ -9,29 +9,27 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class RegisterActivity extends AppCompatActivity {
+import com.dongchyeon.passwordkeeper.databinding.ActivityLoginBinding;
+import com.dongchyeon.passwordkeeper.databinding.ActivityRegisterBinding;
 
+public class RegisterActivity extends AppCompatActivity {
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
 
-    private EditText newPassword;
-    private EditText confirmPassword;
-    private Button confirmButton;
+    private ActivityRegisterBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        binding = ActivityRegisterBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         prefs = getSharedPreferences("Pref", MODE_PRIVATE);
 
-        newPassword = findViewById(R.id.new_password);
-        confirmPassword = findViewById(R.id.confirm_password);
-        confirmButton = findViewById(R.id.confirm_button);
-        confirmButton.setOnClickListener(view -> {
-            if (newPassword.getText().toString().equals(confirmPassword.getText().toString())) {
+        binding.confirmBtn.setOnClickListener(view -> {
+            if (binding.newPassword.getText().toString().equals(binding.confirmPassword.getText().toString())) {
                 editor = prefs.edit();
-                editor.putString("password", newPassword.getText().toString());
+                editor.putString("password", binding.newPassword.getText().toString());
                 editor.putBoolean("isRegistered", true);
                 editor.apply(); // 비밀번호 입력칸과 비밀번호 확인칸이 같을 시 비밀번호 설정 완료
 

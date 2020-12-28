@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.dongchyeon.passwordkeeper.card.CardAdapter;
 import com.dongchyeon.passwordkeeper.card.CardEditActivity;
@@ -13,28 +12,28 @@ import com.dongchyeon.passwordkeeper.card.CardViewActivity;
 import com.dongchyeon.passwordkeeper.database.AppDatabase;
 import com.dongchyeon.passwordkeeper.database.dao.CardDao;
 import com.dongchyeon.passwordkeeper.database.dao.SiteDao;
+import com.dongchyeon.passwordkeeper.databinding.ActivityItemListBinding;
 import com.dongchyeon.passwordkeeper.site.SiteAdapter;
 import com.dongchyeon.passwordkeeper.site.SiteEditActivity;
 import com.dongchyeon.passwordkeeper.site.SiteViewActivity;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ItemListActivity extends AppCompatActivity {
     private AppDatabase appDatabase;
     private SiteDao siteDao;
     private CardDao cardDao;
 
-    private RecyclerView recyclerView;
     private SiteAdapter siteAdapter;
     private CardAdapter cardAdapter;
 
-    private FloatingActionButton addButton;
+    private ActivityItemListBinding binding;
     private String dataType;
     private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_item_list);
+        binding = ActivityItemListBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         appDatabase = AppDatabase.getInstance(getApplicationContext());
         siteDao = appDatabase.siteDao();
@@ -46,13 +45,12 @@ public class ItemListActivity extends AppCompatActivity {
     private void initUI() {
         intent = getIntent();
         dataType = intent.getStringExtra("category");
-        recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
         switch(dataType) {
             case "사이트":
                 siteAdapter = new SiteAdapter(appDatabase);
-                recyclerView.setAdapter(siteAdapter);
+                binding.recyclerView.setAdapter(siteAdapter);
                 siteDao.getAll().observe(this, data -> siteAdapter.setItems(data));
 
                 siteAdapter.setOnItemClickListener((holder, view, position) -> {
@@ -69,7 +67,7 @@ public class ItemListActivity extends AppCompatActivity {
                 break;
             case "카드":
                 cardAdapter = new CardAdapter(appDatabase);
-                recyclerView.setAdapter(cardAdapter);
+                binding.recyclerView.setAdapter(cardAdapter);
                 cardDao.getAll().observe(this, data -> cardAdapter.setItems(data));
 
                 cardAdapter.setOnItemClickListener((holder, view, position) -> {
@@ -88,8 +86,7 @@ public class ItemListActivity extends AppCompatActivity {
                 break;
         }
 
-        addButton = findViewById(R.id.add_button);
-        addButton.setOnClickListener(view -> {
+        binding.addBtn.setOnClickListener(view -> {
             switch(dataType) {
                 case "사이트":
                     intent = new Intent(getApplicationContext(), SiteEditActivity.class);

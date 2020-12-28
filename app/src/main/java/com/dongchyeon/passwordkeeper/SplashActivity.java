@@ -1,16 +1,15 @@
 package com.dongchyeon.passwordkeeper;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 
-public class SplashActivity extends AppCompatActivity {
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
+public class SplashActivity extends AppCompatActivity {
     private Handler handler = new Handler(Looper.getMainLooper());
     private SharedPreferences prefs;
     private Boolean isRegistered;
@@ -34,5 +33,4 @@ public class SplashActivity extends AppCompatActivity {
             }
         }, 1000);
     }
-
 }

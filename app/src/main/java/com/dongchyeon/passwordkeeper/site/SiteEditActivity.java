@@ -2,16 +2,14 @@ package com.dongchyeon.passwordkeeper.site;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.dongchyeon.passwordkeeper.R;
 import com.dongchyeon.passwordkeeper.database.AppDatabase;
 import com.dongchyeon.passwordkeeper.database.dao.SiteDao;
 import com.dongchyeon.passwordkeeper.database.entity.Site;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.dongchyeon.passwordkeeper.databinding.ActivitySiteEditBinding;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -21,16 +19,13 @@ public class SiteEditActivity extends AppCompatActivity {
     private SiteDao siteDao;
     private Site site;
 
-    private EditText titleEdit;
-    private EditText idEdit;
-    private EditText pwEdit;
-    private EditText urlEdit;
-    private FloatingActionButton confirmButton;
+    private ActivitySiteEditBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_site_edit);
+        binding = ActivitySiteEditBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         initUI();
     }
@@ -38,11 +33,6 @@ public class SiteEditActivity extends AppCompatActivity {
     private void initUI() {
         appDatabase = AppDatabase.getInstance(this);
         siteDao = appDatabase.siteDao();
-
-        titleEdit = findViewById(R.id.title_edit);
-        idEdit = findViewById(R.id.id_edit);
-        pwEdit = findViewById(R.id.pw_edit);
-        urlEdit = findViewById(R.id.url_edit);
 
         // SiteViewActivity로부터 인텐트를 넘겨받음
         Intent intent = getIntent();
@@ -53,19 +43,18 @@ public class SiteEditActivity extends AppCompatActivity {
         String pw = intent.getStringExtra("pw");
         String url = intent.getStringExtra("url");
 
-        titleEdit.setText(title);
-        idEdit.setText(id);
-        pwEdit.setText(pw);
-        urlEdit.setText(url);
+        binding.titleEdit.setText(title);
+        binding.idEdit.setText(id);
+        binding.pwEdit.setText(pw);
+        binding.urlEdit.setText(url);
 
         // 버튼 세팅
-        confirmButton = findViewById(R.id.confirm_button);
-        confirmButton.setOnClickListener(view -> {
+        binding.confirmBtn.setOnClickListener(view -> {
             if (eid != -1) {
                 update(eid);    // 이미 있는 아이템일 경우 업데이트
                 Toast.makeText(getApplicationContext(), "수정되었습니다.", Toast.LENGTH_SHORT).show();
             } else {
-                site = new Site(titleEdit.getText().toString(), idEdit.getText().toString(), pwEdit.getText().toString(), urlEdit.getText().toString());
+                site = new Site(binding.titleEdit.getText().toString(), binding.idEdit.getText().toString(), binding.pwEdit.getText().toString(), binding.urlEdit.getText().toString());
                 insert(site);
                 Toast.makeText(getApplicationContext(), "추가되었습니다.", Toast.LENGTH_SHORT).show();
             }
@@ -83,10 +72,10 @@ public class SiteEditActivity extends AppCompatActivity {
     private void update(int eid) {
         Runnable addRunnable = () -> {
             site = siteDao.getItemByEid(eid);
-            site.setTitle(titleEdit.getText().toString());
-            site.setId(idEdit.getText().toString());
-            site.setPassword(pwEdit.getText().toString());
-            site.setUrl(urlEdit.getText().toString());
+            site.setTitle(binding.titleEdit.getText().toString());
+            site.setId(binding.idEdit.getText().toString());
+            site.setPassword(binding.pwEdit.getText().toString());
+            site.setUrl(binding.urlEdit.getText().toString());
             siteDao.update(site);
         };
         Executor executor = Executors.newSingleThreadExecutor();

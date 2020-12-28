@@ -6,18 +6,19 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.dongchyeon.passwordkeeper.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
-    private ViewPager2 viewPager;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        viewPager = findViewById(R.id.viewPager);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         CategoryAdapter adapter = new CategoryAdapter();
-        viewPager.setAdapter(adapter);
+        binding.viewPager.setAdapter(adapter);
         adapter.addItem(new Category("사이트"));
         adapter.addItem(new Category("카드"));
 

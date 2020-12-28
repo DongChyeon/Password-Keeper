@@ -51,7 +51,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         public ViewHolder(View itemView, final CategoryAdapter listener) {
             super(itemView);
 
-            title = itemView.findViewById(R.id.title_text);
+            title = itemView.findViewById(R.id.titleText);
 
             itemView.setOnClickListener(view -> {
                 int position = getAdapterPosition();

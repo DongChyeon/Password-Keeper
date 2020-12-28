@@ -18,13 +18,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/title_layout"
+            android:id="@+id/titleLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/title_text"
+                android:id="@+id/titleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -32,7 +32,7 @@
                 android:textColor="@color/colorPrimary" />
 
             <TextView
-                android:id="@+id/title_view"
+                android:id="@+id/titleView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -43,13 +43,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/id_layout"
+            android:id="@+id/idLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/id_text"
+                android:id="@+id/idText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -57,7 +57,7 @@
                 android:textColor="@color/colorPrimary" />
 
             <TextView
-                android:id="@+id/id_view"
+                android:id="@+id/idView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -68,13 +68,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/pw_layout"
+            android:id="@+id/pwLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/pw_text"
+                android:id="@+id/pwText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -82,7 +82,7 @@
                 android:textColor="@color/colorPrimary" />
 
             <TextView
-                android:id="@+id/pw_view"
+                android:id="@+id/pwView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -93,13 +93,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/url_layout"
+            android:id="@+id/urlLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/url_text"
+                android:id="@+id/urlText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -107,7 +107,7 @@
                 android:textColor="@color/colorPrimary" />
 
             <TextView
-                android:id="@+id/url_view"
+                android:id="@+id/urlView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -121,7 +121,7 @@
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/delete_button"
+        android:id="@+id/deleteBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -134,7 +134,7 @@
         app:srcCompat="@drawable/ic_baseline_delete_24" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/edit_button"
+        android:id="@+id/editBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"

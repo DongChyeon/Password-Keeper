@@ -66,7 +66,7 @@ public class SiteAdapter extends RecyclerView.Adapter<SiteAdapter.ViewHolder> im
 
         public ViewHolder(View view) {
             super(view);
-            title = view.findViewById(R.id.title_text);
+            title = view.findViewById(R.id.titleText);
             icon = view.findViewById(R.id.icon);
 
             view.setOnClickListener(view1 -> {

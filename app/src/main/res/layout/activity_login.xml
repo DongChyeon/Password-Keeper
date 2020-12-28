@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/input_password"
+            android:id="@+id/inputPassword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
@@ -31,7 +31,7 @@
             android:textColorHint="@color/textHintColor" />
 
         <Button
-            android:id="@+id/login_button"
+            android:id="@+id/loginBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -43,7 +43,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/explain_text"
+        android:id="@+id/explainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

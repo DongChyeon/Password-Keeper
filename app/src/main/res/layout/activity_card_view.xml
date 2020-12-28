@@ -18,13 +18,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/title_layout"
+            android:id="@+id/titleLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/title_text"
+                android:id="@+id/titleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -32,7 +32,7 @@
                 android:textColor="@color/colorPrimary" />
 
             <TextView
-                android:id="@+id/title_view"
+                android:id="@+id/titleView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -43,13 +43,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/id_layout"
+            android:id="@+id/idLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/id_text"
+                android:id="@+id/idText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -57,7 +57,7 @@
                 android:textColor="@color/colorPrimary" />
 
             <TextView
-                android:id="@+id/id_view"
+                android:id="@+id/idView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -68,13 +68,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/pw_layout"
+            android:id="@+id/pwLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/pw_text"
+                android:id="@+id/pwText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -82,7 +82,7 @@
                 android:textColor="@color/colorPrimary" />
 
             <TextView
-                android:id="@+id/pw_view"
+                android:id="@+id/pwView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -93,13 +93,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/msg_layout"
+            android:id="@+id/msgLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/msg_text"
+                android:id="@+id/msgText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -107,7 +107,7 @@
                 android:textColor="@color/colorPrimary" />
 
             <TextView
-                android:id="@+id/msg_view"
+                android:id="@+id/msgView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -118,13 +118,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/pin_layout"
+            android:id="@+id/pinLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/pin_text"
+                android:id="@+id/pinText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -132,7 +132,7 @@
                 android:textColor="@color/colorPrimary" />
 
             <TextView
-                android:id="@+id/pin_view"
+                android:id="@+id/pinView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -143,13 +143,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/company_layout"
+            android:id="@+id/companyLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/company_text"
+                android:id="@+id/companyText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -157,7 +157,7 @@
                 android:textColor="@color/colorPrimary" />
 
             <TextView
-                android:id="@+id/company_view"
+                android:id="@+id/companyView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -170,7 +170,7 @@
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/delete_button"
+        android:id="@+id/deleteBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -183,7 +183,7 @@
         app:srcCompat="@drawable/ic_baseline_delete_24" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/edit_button"
+        android:id="@+id/editBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"

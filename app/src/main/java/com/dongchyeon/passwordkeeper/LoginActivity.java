@@ -3,14 +3,14 @@ package com.dongchyeon.passwordkeeper;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
+
+import com.dongchyeon.passwordkeeper.databinding.ActivityLoginBinding;
 
 import java.util.concurrent.Executor;
 
@@ -21,20 +21,18 @@ public class LoginActivity extends AppCompatActivity {
 
     private SharedPreferences prefs;
 
-    private EditText inputPassword;
-    private Button loginButton;
+    private ActivityLoginBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         prefs = getSharedPreferences("Pref", MODE_PRIVATE);
 
-        inputPassword = findViewById(R.id.input_password);
-        loginButton = findViewById(R.id.login_button);
-        loginButton.setOnClickListener(view -> {
-            if ((inputPassword.getText().toString()).equals(prefs.getString("password", null))) {
+        binding.loginBtn.setOnClickListener(view -> {
+            if ((binding.inputPassword.getText().toString()).equals(prefs.getString("password", null))) {
                 Toast.makeText(getApplicationContext(), "인증 성공", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
