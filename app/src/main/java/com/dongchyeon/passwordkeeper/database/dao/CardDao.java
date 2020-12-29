@@ -13,7 +13,7 @@ import java.util.List;
 
 @Dao
 public interface CardDao {
-    @Query("SELECT * FROM card")
+    @Query("SELECT * FROM Cards")
     LiveData<List<Card>> getAll();
 
     @Insert
@@ -25,6 +25,6 @@ public interface CardDao {
     @Delete
     void delete(Card card);
 
-    @Query("SELECT * FROM card WHERE eid = :id")
-    Card getItemByEid(int id);
+    @Query("SELECT * FROM Cards WHERE id = :id")
+    Card getItemById(int id);
 }

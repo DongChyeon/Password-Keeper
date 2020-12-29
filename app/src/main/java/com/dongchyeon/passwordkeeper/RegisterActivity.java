@@ -1,15 +1,12 @@
 package com.dongchyeon.passwordkeeper;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import com.dongchyeon.passwordkeeper.databinding.ActivityLoginBinding;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.dongchyeon.passwordkeeper.databinding.ActivityRegisterBinding;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -33,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
                 editor.putBoolean("isRegistered", true);
                 editor.apply(); // 비밀번호 입력칸과 비밀번호 확인칸이 같을 시 비밀번호 설정 완료
 
-                Intent intent = new Intent(getApplicationContext(), ItemListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 finish();
             } else {

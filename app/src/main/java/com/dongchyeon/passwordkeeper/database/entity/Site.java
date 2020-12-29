@@ -1,30 +1,36 @@
 package com.dongchyeon.passwordkeeper.database.entity;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "Sites")
 public class Site {
     @PrimaryKey(autoGenerate = true)
-    private int eid;    // 엔터티 아이디 (기본키)
+    @ColumnInfo(name = "id")
+    private int id;    // 엔터티 아이디 (기본키)
+    @ColumnInfo(name = "title")
     private String title;
-    private String id;
+    @ColumnInfo(name = "uid")
+    private String uid;
+    @ColumnInfo(name = "password")
     private String password;
+    @ColumnInfo(name = "url")
     private String url;
 
-    public Site(String title, String id, String password, String url) {
+    public Site(String title, String uid, String password, String url) {
         this.title = title;
-        this.id = id;
+        this.uid = uid;
         this.password = password;
         this.url = url;
     }
 
-    public int getEid() {
-        return eid;
+    public int getId() {
+        return id;
     }
 
-    public void setEid(int eid) {
-        this.eid = eid;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -35,12 +41,12 @@ public class Site {
         this.title = title;
     }
 
-    public String getId() {
-        return id;
+    public String getUid() {
+        return uid;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getPassword() {
@@ -57,16 +63,5 @@ public class Site {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    @Override
-    public String toString() {
-        return "Site{" +
-                "eid=" + eid +
-                ", title='" + title + '\'' +
-                ", id='" + id + '\'' +
-                ", password='" + password + '\'' +
-                ", url='" + url + '\'' +
-                '}';
     }
 }

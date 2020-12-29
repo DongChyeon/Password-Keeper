@@ -13,7 +13,7 @@ import java.util.List;
 
 @Dao
 public interface SiteDao {
-    @Query("SELECT * FROM site")
+    @Query("SELECT * FROM Sites")
     LiveData<List<Site>> getAll();
 
     @Insert
@@ -25,6 +25,6 @@ public interface SiteDao {
     @Delete
     void delete(Site site);
 
-    @Query("SELECT * FROM site WHERE eid = :id")
-    Site getItemByEid(int id);
+    @Query("SELECT * FROM Sites WHERE id = :id")
+    Site getItemById(int id);
 }

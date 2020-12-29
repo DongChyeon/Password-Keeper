@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> implements OnCardItemClickListener {
-
     private List<Card> items = new ArrayList<>();
     private Context context;
     private AppDatabase db;

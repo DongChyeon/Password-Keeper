@@ -36,16 +36,16 @@ public class CardViewActivity extends AppCompatActivity {
         // 메인 액티비티로부터 인텐트를 넘겨받음
         Intent intent = getIntent();
 
-        int eid = intent.getIntExtra("eid", 0);
+        int id = intent.getIntExtra("id", 0);
         String title = intent.getStringExtra("title");
-        String id = intent.getStringExtra("id");
+        String uid = intent.getStringExtra("uid");
         String pw = intent.getStringExtra("pw");
         String msg = intent.getStringExtra("msg");
         String pin = intent.getStringExtra("pin");
         String company = intent.getStringExtra("company");
 
         binding.titleView.setText(title);
-        binding.idView.setText(id);
+        binding.idView.setText(uid);
         binding.pwView.setText(pw);
         binding.msgView.setText(msg);
         binding.pinView.setText(pin);
@@ -57,9 +57,9 @@ public class CardViewActivity extends AppCompatActivity {
         binding.editBtn.setOnClickListener(view -> {
             Intent intent2 = new Intent(getApplicationContext(), CardEditActivity.class);
 
-            intent2.putExtra("eid", eid);
-            intent2.putExtra("title", title);
             intent2.putExtra("id", id);
+            intent2.putExtra("title", title);
+            intent2.putExtra("uid", uid);
             intent2.putExtra("pw", pw);
             intent2.putExtra("msg", msg);
             intent2.putExtra("pin", pin);
@@ -70,15 +70,15 @@ public class CardViewActivity extends AppCompatActivity {
         });
 
         binding.deleteBtn.setOnClickListener(view -> {
-            delete(eid);
+            delete(id);
             Toast.makeText(getApplicationContext(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
             finish();
         });
     }
 
     // Card 아이템 삽입
-    private void delete(int eid) {
-        Runnable addRunnable = () -> cardDao.delete(cardDao.getItemByEid(eid));
+    private void delete(int id) {
+        Runnable addRunnable = () -> cardDao.delete(cardDao.getItemById(id));
         Executor executor = Executors.newSingleThreadExecutor();
         executor.execute(addRunnable);
     }

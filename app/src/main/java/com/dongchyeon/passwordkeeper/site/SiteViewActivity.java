@@ -36,14 +36,14 @@ public class SiteViewActivity extends AppCompatActivity {
         // 메인 액티비티로부터 인텐트를 넘겨받음
         Intent intent = getIntent();
 
-        int eid = intent.getIntExtra("eid", 0);
+        int id = intent.getIntExtra("id", 0);
         String title = intent.getStringExtra("title");
-        String id = intent.getStringExtra("id");
+        String uid = intent.getStringExtra("uid");
         String pw = intent.getStringExtra("pw");
         String url = intent.getStringExtra("url");
 
         binding.titleView.setText(title);
-        binding.idView.setText(id);
+        binding.idView.setText(uid);
         binding.pwView.setText(pw);
         binding.urlView.setText(url);
 
@@ -53,9 +53,9 @@ public class SiteViewActivity extends AppCompatActivity {
         binding.editBtn.setOnClickListener(view -> {
             Intent intent2 = new Intent(getApplicationContext(), SiteEditActivity.class);
 
-            intent2.putExtra("eid", eid);
-            intent2.putExtra("title", title);
             intent2.putExtra("id", id);
+            intent2.putExtra("title", title);
+            intent2.putExtra("uid", uid);
             intent2.putExtra("pw", pw);
             intent2.putExtra("url", url);
 
@@ -64,15 +64,15 @@ public class SiteViewActivity extends AppCompatActivity {
         });
 
         binding.deleteBtn.setOnClickListener(view -> {
-            delete(eid);
+            delete(id);
             Toast.makeText(getApplicationContext(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
             finish();
         });
     }
 
     // Site 아이템 삽입
-    private void delete(int eid) {
-        Runnable addRunnable = () -> siteDao.delete(siteDao.getItemByEid(eid));
+    private void delete(int id) {
+        Runnable addRunnable = () -> siteDao.delete(siteDao.getItemById(id));
         Executor executor = Executors.newSingleThreadExecutor();
         executor.execute(addRunnable);
     }

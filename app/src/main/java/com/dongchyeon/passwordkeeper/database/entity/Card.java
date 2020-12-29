@@ -1,34 +1,42 @@
 package com.dongchyeon.passwordkeeper.database.entity;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "Cards")
 public class Card {
     @PrimaryKey(autoGenerate = true)
-    private int eid;    // 엔터티 아이디 (기본키)
+    @ColumnInfo(name = "id")
+    private int id;    // 엔터티 아이디 (기본키)
+    @ColumnInfo(name = "title")
     private String title;
-    private String id;
+    @ColumnInfo(name = "uid")
+    private String uid;
+    @ColumnInfo(name = "password")
     private String password;
+    @ColumnInfo(name = "message")
     private String message;
+    @ColumnInfo(name = "pin")
     private String pin;
+    @ColumnInfo(name = "company")
     private String company;
 
-    public Card(String title, String id, String password, String message, String pin, String company) {
+    public Card(String title, String uid, String password, String message, String pin, String company) {
         this.title = title;
-        this.id = id;
+        this.uid = uid;
         this.password = password;
         this.message = message;
         this.pin = pin;
         this.company = company;
     }
 
-    public int getEid() {
-        return eid;
+    public int getId() {
+        return id;
     }
 
-    public void setEid(int eid) {
-        this.eid = eid;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -39,12 +47,12 @@ public class Card {
         this.title = title;
     }
 
-    public String getId() {
-        return id;
+    public String getUid() {
+        return uid;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getPassword() {
@@ -59,7 +67,7 @@ public class Card {
         return message;
     }
 
-    public void setMessage(String url) {
+    public void setMessage(String message) {
         this.message = message;
     }
 
@@ -77,18 +85,5 @@ public class Card {
 
     public void setCompany(String company) {
         this.company = company;
-    }
-
-    @Override
-    public String toString() {
-        return "Card{" +
-                "eid=" + eid +
-                ", title='" + title + '\'' +
-                ", id='" + id + '\'' +
-                ", password='" + password + '\'' +
-                ", message='" + message + '\'' +
-                ", pin='" + pin + '\'' +
-                ", company='" + company + '\'' +
-                '}';
     }
 }

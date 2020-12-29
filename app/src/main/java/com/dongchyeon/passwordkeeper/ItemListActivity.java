@@ -56,9 +56,9 @@ public class ItemListActivity extends AppCompatActivity {
                 siteAdapter.setOnItemClickListener((holder, view, position) -> {
                     Intent intent = new Intent(getApplicationContext(), SiteViewActivity.class);
 
-                    intent.putExtra("eid", siteAdapter.getItem(position).getEid());
-                    intent.putExtra("title", siteAdapter.getItem(position).getTitle());
                     intent.putExtra("id", siteAdapter.getItem(position).getId());
+                    intent.putExtra("title", siteAdapter.getItem(position).getTitle());
+                    intent.putExtra("uid", siteAdapter.getItem(position).getUid());
                     intent.putExtra("pw", siteAdapter.getItem(position).getPassword());
                     intent.putExtra("url", siteAdapter.getItem(position).getUrl());
 
@@ -73,9 +73,9 @@ public class ItemListActivity extends AppCompatActivity {
                 cardAdapter.setOnItemClickListener((holder, view, position) -> {
                     Intent intent = new Intent(getApplicationContext(), CardViewActivity.class);
 
-                    intent.putExtra("eid", cardAdapter.getItem(position).getEid());
-                    intent.putExtra("title", cardAdapter.getItem(position).getTitle());
                     intent.putExtra("id", cardAdapter.getItem(position).getId());
+                    intent.putExtra("title", cardAdapter.getItem(position).getTitle());
+                    intent.putExtra("uid", cardAdapter.getItem(position).getUid());
                     intent.putExtra("pw", cardAdapter.getItem(position).getPassword());
                     intent.putExtra("msg", cardAdapter.getItem(position).getMessage());
                     intent.putExtra("pin", cardAdapter.getItem(position).getPin());
