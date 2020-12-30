@@ -50,8 +50,8 @@ public class CardEditActivity extends AppCompatActivity {
             String uidText = binding.idEdit.getText().toString();
             String pwText = binding.pwEdit.getText().toString();
             String msgText = binding.msgEdit.getText().toString();
-            String pinText = binding.pinText.getText().toString();
-            String companyText = binding.companyText.getText().toString();
+            String pinText = binding.pinEdit.getText().toString();
+            String companyText = binding.companyEdit.getText().toString();
 
             if (id != -1) {
                 cardViewModel.update(id, titleText, uidText, pwText, msgText, pinText, companyText);    // 이미 있는 아이템일 경우 업데이트
@@ -61,6 +61,7 @@ public class CardEditActivity extends AppCompatActivity {
                 cardViewModel.insert(card);
                 Toast.makeText(getApplicationContext(), "추가되었습니다.", Toast.LENGTH_SHORT).show();
             }
+            finish();
         });
     }
 }
