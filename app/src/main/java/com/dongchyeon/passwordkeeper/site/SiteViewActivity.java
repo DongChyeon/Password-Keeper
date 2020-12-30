@@ -6,18 +6,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
-import com.dongchyeon.passwordkeeper.database.AppDatabase;
-import com.dongchyeon.passwordkeeper.database.dao.SiteDao;
 import com.dongchyeon.passwordkeeper.databinding.ActivitySiteViewBinding;
 
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-
 public class SiteViewActivity extends AppCompatActivity {
-    private AppDatabase appDatabase;
-    private SiteDao siteDao;
-
     private ActivitySiteViewBinding binding;
 
     @Override
@@ -30,8 +23,8 @@ public class SiteViewActivity extends AppCompatActivity {
     }
 
     private void initUI() {
-        appDatabase = AppDatabase.getInstance(this);
-        siteDao = appDatabase.siteDao();
+        SiteViewModel siteViewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication()))
+                .get(SiteViewModel.class);
 
         // 메인 액티비티로부터 인텐트를 넘겨받음
         Intent intent = getIntent();
@@ -64,17 +57,10 @@ public class SiteViewActivity extends AppCompatActivity {
         });
 
         binding.deleteBtn.setOnClickListener(view -> {
-            delete(id);
+            siteViewModel.delete(id);
             Toast.makeText(getApplicationContext(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
             finish();
         });
-    }
-
-    // Site 아이템 삽입
-    private void delete(int id) {
-        Runnable addRunnable = () -> siteDao.delete(siteDao.getItemById(id));
-        Executor executor = Executors.newSingleThreadExecutor();
-        executor.execute(addRunnable);
     }
 
     // 빈 항목 숨기기

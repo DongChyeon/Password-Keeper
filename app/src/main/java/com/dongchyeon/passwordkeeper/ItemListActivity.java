@@ -4,27 +4,21 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.dongchyeon.passwordkeeper.card.CardAdapter;
 import com.dongchyeon.passwordkeeper.card.CardEditActivity;
 import com.dongchyeon.passwordkeeper.card.CardViewActivity;
-import com.dongchyeon.passwordkeeper.database.AppDatabase;
-import com.dongchyeon.passwordkeeper.database.dao.CardDao;
-import com.dongchyeon.passwordkeeper.database.dao.SiteDao;
+import com.dongchyeon.passwordkeeper.card.CardViewModel;
 import com.dongchyeon.passwordkeeper.databinding.ActivityItemListBinding;
 import com.dongchyeon.passwordkeeper.site.SiteAdapter;
 import com.dongchyeon.passwordkeeper.site.SiteEditActivity;
 import com.dongchyeon.passwordkeeper.site.SiteViewActivity;
+import com.dongchyeon.passwordkeeper.site.SiteViewModel;
 
 public class ItemListActivity extends AppCompatActivity {
-    private AppDatabase appDatabase;
-    private SiteDao siteDao;
-    private CardDao cardDao;
-
-    private SiteAdapter siteAdapter;
-    private CardAdapter cardAdapter;
-
     private ActivityItemListBinding binding;
     private String dataType;
     private Intent intent;
@@ -32,12 +26,8 @@ public class ItemListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityItemListBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        appDatabase = AppDatabase.getInstance(getApplicationContext());
-        siteDao = appDatabase.siteDao();
-        cardDao = appDatabase.cardDao();
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_item_list);
+        binding.setLifecycleOwner(this);
 
         initUI();
     }
@@ -49,9 +39,11 @@ public class ItemListActivity extends AppCompatActivity {
 
         switch(dataType) {
             case "사이트":
-                siteAdapter = new SiteAdapter(appDatabase);
+                SiteViewModel siteViewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication()))
+                        .get(SiteViewModel.class);
+                SiteAdapter siteAdapter = new SiteAdapter();
+                siteViewModel.getSites().observe(this, siteAdapter::setItems);
                 binding.recyclerView.setAdapter(siteAdapter);
-                siteDao.getAll().observe(this, data -> siteAdapter.setItems(data));
 
                 siteAdapter.setOnItemClickListener((holder, view, position) -> {
                     Intent intent = new Intent(getApplicationContext(), SiteViewActivity.class);
@@ -66,9 +58,11 @@ public class ItemListActivity extends AppCompatActivity {
                 });
                 break;
             case "카드":
-                cardAdapter = new CardAdapter(appDatabase);
+                CardViewModel cardViewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication()))
+                        .get(CardViewModel.class);
+                CardAdapter cardAdapter = new CardAdapter();
+                cardViewModel.getCards().observe(this, cardAdapter::setItems);
                 binding.recyclerView.setAdapter(cardAdapter);
-                cardDao.getAll().observe(this, data -> cardAdapter.setItems(data));
 
                 cardAdapter.setOnItemClickListener((holder, view, position) -> {
                     Intent intent = new Intent(getApplicationContext(), CardViewActivity.class);

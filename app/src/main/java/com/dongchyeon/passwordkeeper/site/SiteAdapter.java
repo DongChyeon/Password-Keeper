@@ -1,6 +1,5 @@
 package com.dongchyeon.passwordkeeper.site;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dongchyeon.passwordkeeper.R;
-import com.dongchyeon.passwordkeeper.database.AppDatabase;
 import com.dongchyeon.passwordkeeper.database.entity.Site;
 
 import java.util.ArrayList;
@@ -20,14 +18,8 @@ import java.util.List;
 public class SiteAdapter extends RecyclerView.Adapter<SiteAdapter.ViewHolder> implements OnSiteItemClickListener {
 
     private List<Site> items = new ArrayList<>();
-    private Context context;
-    private AppDatabase db;
 
     OnSiteItemClickListener listener;
-
-    public SiteAdapter(AppDatabase db) {
-        this.db = db;
-    }
 
     @Override
     public int getItemCount() {
@@ -44,7 +36,6 @@ public class SiteAdapter extends RecyclerView.Adapter<SiteAdapter.ViewHolder> im
     @Override
     public SiteAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item, viewGroup, false);
-        context = viewGroup.getContext();
         return new ViewHolder(view);
     }
 

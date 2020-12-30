@@ -1,4 +1,4 @@
-package com.dongchyeon.passwordkeeper;
+package com.dongchyeon.passwordkeeper.category;
 
 public class Category {
     private String title;
