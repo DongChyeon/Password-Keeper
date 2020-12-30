@@ -1,4 +1,4 @@
-package com.dongchyeon.passwordkeeper;
+package com.dongchyeon.passwordkeeper.category;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.dongchyeon.passwordkeeper.R;
 
 import java.util.ArrayList;
 
@@ -45,7 +47,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         }
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView title;
 
         public ViewHolder(View itemView, final CategoryAdapter listener) {

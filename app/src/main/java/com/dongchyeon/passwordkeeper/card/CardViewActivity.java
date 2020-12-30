@@ -6,18 +6,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
-import com.dongchyeon.passwordkeeper.database.AppDatabase;
-import com.dongchyeon.passwordkeeper.database.dao.CardDao;
 import com.dongchyeon.passwordkeeper.databinding.ActivityCardViewBinding;
 
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-
 public class CardViewActivity extends AppCompatActivity {
-    private AppDatabase appDatabase;
-    private CardDao cardDao;
-    
     private ActivityCardViewBinding binding;
 
     @Override
@@ -30,8 +23,8 @@ public class CardViewActivity extends AppCompatActivity {
     }
 
     private void initUI() {
-        appDatabase = AppDatabase.getInstance(this);
-        cardDao = appDatabase.cardDao();
+        CardViewModel cardViewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication()))
+                .get(CardViewModel.class);
 
         // 메인 액티비티로부터 인텐트를 넘겨받음
         Intent intent = getIntent();
@@ -70,17 +63,10 @@ public class CardViewActivity extends AppCompatActivity {
         });
 
         binding.deleteBtn.setOnClickListener(view -> {
-            delete(id);
+            cardViewModel.delete(id);
             Toast.makeText(getApplicationContext(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
             finish();
         });
-    }
-
-    // Card 아이템 삽입
-    private void delete(int id) {
-        Runnable addRunnable = () -> cardDao.delete(cardDao.getItemById(id));
-        Executor executor = Executors.newSingleThreadExecutor();
-        executor.execute(addRunnable);
     }
 
     // 빈 항목 숨기기

@@ -5,20 +5,12 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
-import com.dongchyeon.passwordkeeper.database.AppDatabase;
-import com.dongchyeon.passwordkeeper.database.dao.CardDao;
 import com.dongchyeon.passwordkeeper.database.entity.Card;
 import com.dongchyeon.passwordkeeper.databinding.ActivityCardEditBinding;
 
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-
 public class CardEditActivity extends AppCompatActivity {
-    private AppDatabase appDatabase;
-    private CardDao cardDao;
-    private Card card;
-    
     private ActivityCardEditBinding binding;
 
     @Override
@@ -31,8 +23,8 @@ public class CardEditActivity extends AppCompatActivity {
     }
 
     private void initUI() {
-        appDatabase = AppDatabase.getInstance(this);
-        cardDao = appDatabase.cardDao();
+        CardViewModel cardViewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication()))
+                .get(CardViewModel.class);
 
         // CardViewActivity로부터 인텐트를 넘겨받음
         Intent intent = getIntent();
@@ -54,37 +46,21 @@ public class CardEditActivity extends AppCompatActivity {
 
         // 버튼 세팅
         binding.confirmBtn.setOnClickListener(view -> {
+            String titleText = binding.titleEdit.getText().toString();
+            String uidText = binding.idEdit.getText().toString();
+            String pwText = binding.pwEdit.getText().toString();
+            String msgText = binding.msgEdit.getText().toString();
+            String pinText = binding.pinText.getText().toString();
+            String companyText = binding.companyText.getText().toString();
+
             if (id != -1) {
-                update(id);    // 이미 있는 아이템일 경우 업데이트
+                cardViewModel.update(id, titleText, uidText, pwText, msgText, pinText, companyText);    // 이미 있는 아이템일 경우 업데이트
                 Toast.makeText(getApplicationContext(), "수정되었습니다.", Toast.LENGTH_SHORT).show();
             } else {
-                card = new Card(binding.titleEdit.getText().toString(), binding.idEdit.getText().toString(), binding.pwEdit.getText().toString(), binding.msgEdit.getText().toString(), binding.pinEdit.getText().toString(), binding.companyEdit.getText().toString());
-                insert(card);
+                Card card = new Card(titleText, uidText, pwText, msgText, pinText, companyText);
+                cardViewModel.insert(card);
                 Toast.makeText(getApplicationContext(), "추가되었습니다.", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    // Card 아이템 삽입
-    private void insert(final Card card) {
-        Runnable addRunnable = () -> cardDao.insert(card);
-        Executor executor = Executors.newSingleThreadExecutor();
-        executor.execute(addRunnable);
-    }
-
-    // Card 아이템 수정
-    private void update(int id) {
-        Runnable addRunnable = () -> {
-            card = cardDao.getItemById(id);
-            card.setTitle(binding.titleEdit.getText().toString());
-            card.setUid(binding.idEdit.getText().toString());
-            card.setPassword(binding.pwEdit.getText().toString());
-            card.setMessage(binding.msgEdit.getText().toString());
-            card.setPin(binding.pinEdit.getText().toString());
-            card.setCompany(binding.companyEdit.getText().toString());
-            cardDao.update(card);
-        };
-        Executor executor = Executors.newSingleThreadExecutor();
-        executor.execute(addRunnable);
     }
 }

@@ -1,6 +1,5 @@
 package com.dongchyeon.passwordkeeper.card;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dongchyeon.passwordkeeper.R;
-import com.dongchyeon.passwordkeeper.database.AppDatabase;
 import com.dongchyeon.passwordkeeper.database.entity.Card;
 
 import java.util.ArrayList;
@@ -19,14 +17,8 @@ import java.util.List;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> implements OnCardItemClickListener {
     private List<Card> items = new ArrayList<>();
-    private Context context;
-    private AppDatabase db;
 
     OnCardItemClickListener listener;
-
-    public CardAdapter(AppDatabase db) {
-        this.db = db;
-    }
 
     @Override
     public int getItemCount() {
@@ -43,7 +35,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> im
     @Override
     public CardAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item, viewGroup, false);
-        context = viewGroup.getContext();
         return new ViewHolder(view);
     }
 

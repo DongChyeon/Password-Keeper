@@ -1,11 +1,12 @@
 package com.dongchyeon.passwordkeeper;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.dongchyeon.passwordkeeper.category.Category;
+import com.dongchyeon.passwordkeeper.category.CategoryAdapter;
 import com.dongchyeon.passwordkeeper.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
