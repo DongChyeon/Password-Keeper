@@ -25,7 +25,7 @@ public abstract class AppDatabase extends RoomDatabase {
         if (instance == null) {
             synchronized (AppDatabase.class) {
                 instance = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "app-db")
-                        .addMigrations(MIGRATION_2_3).build();
+                        .setJournalMode(JournalMode.TRUNCATE).addMigrations(MIGRATION_2_3).build();
             }
         }
         return instance;

@@ -22,7 +22,9 @@ public class CardRepository {
         cards = cardDao.getAll();
     }
 
-    public LiveData<List<Card>> getCards() { return cards; }
+    public LiveData<List<Card>> getCards() {
+        return cards;
+    }
 
     // Card 아이템 삽입
     public void insert(final Card card) {

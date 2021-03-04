@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/backup_btn"
+        android:title="백업하기"
+        app:showAsAction="never"/>
+    <item android:id="@+id/restore_btn"
+        android:title="복원하기"
+        app:showAsAction="never"/>
+</menu>
