@@ -1,4 +1,4 @@
-package com.dongchyeon.passwordkeeper.site;
+package com.dongchyeon.passwordkeeper.item;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,52 +7,55 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.dongchyeon.passwordkeeper.database.entity.Site;
-import com.dongchyeon.passwordkeeper.databinding.ActivitySiteEditBinding;
+import com.dongchyeon.passwordkeeper.database.entity.Item;
+import com.dongchyeon.passwordkeeper.databinding.ActivityItemEditBinding;
 
-public class SiteEditActivity extends AppCompatActivity {
-    private ActivitySiteEditBinding binding;
+public class ItemEditActivity extends AppCompatActivity {
+    private ActivityItemEditBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivitySiteEditBinding.inflate(getLayoutInflater());
+        binding = ActivityItemEditBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         initUI();
     }
 
     private void initUI() {
-        SiteViewModel siteViewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication()))
-                .get(SiteViewModel.class);
+        ItemViewModel itemViewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication()))
+                .get(ItemViewModel.class);
 
-        // SiteViewActivity로부터 인텐트를 넘겨받음
+        // ItemViewActivity로부터 인텐트를 넘겨받음
         Intent intent = getIntent();
 
         int id = intent.getIntExtra("id", -1);
         String title = intent.getStringExtra("title");
+        String category = intent.getStringExtra("category");
         String uid = intent.getStringExtra("uid");
         String pw = intent.getStringExtra("pw");
-        String url = intent.getStringExtra("url");
+        String memo = intent.getStringExtra("memo");
 
         binding.titleEdit.setText(title);
+        binding.categoryEdit.setText(category);
         binding.idEdit.setText(uid);
         binding.pwEdit.setText(pw);
-        binding.urlEdit.setText(url);
+        binding.memoEdit.setText(memo);
 
         // 버튼 세팅
         binding.confirmBtn.setOnClickListener(view -> {
             String titleText = binding.titleEdit.getText().toString();
+            String categoryText = binding.categoryEdit.getText().toString();
             String uidText = binding.idEdit.getText().toString();
             String pwText = binding.pwEdit.getText().toString();
-            String urlText = binding.urlEdit.getText().toString();
+            String memoText = binding.memoEdit.getText().toString();
 
             if (id != -1) {
-                siteViewModel.update(id, titleText, uidText, pwText, urlText);    // 이미 있는 아이템일 경우 업데이트
+                itemViewModel.update(id, titleText, categoryText, uidText, pwText, memoText);    // 이미 있는 아이템일 경우 업데이트
                 Toast.makeText(getApplicationContext(), "수정되었습니다.", Toast.LENGTH_SHORT).show();
             } else {
-                Site site = new Site(titleText, uidText, pwText, urlText);
-                siteViewModel.insert(site);
+                Item item = new Item(titleText, categoryText, uidText, pwText, memoText);
+                itemViewModel.insert(item);
                 Toast.makeText(getApplicationContext(), "추가되었습니다.", Toast.LENGTH_SHORT).show();
             }
             finish();

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".site.SiteEditActivity">
+    tools:context=".item.ItemEditActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -33,6 +33,25 @@
             android:ems="10"
             android:hint="제목을 입력하세요."
             android:inputType="text"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/textHintColor" />
+
+        <TextView
+            android:id="@+id/categoryText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="카테고리"
+            android:textColor="@color/colorPrimary" />
+
+        <EditText
+            android:id="@+id/categoryEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:ems="10"
+            android:hint="카테고리를 입력하세요."
+            android:inputType="textPersonName"
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/textHintColor" />
 
@@ -75,21 +94,21 @@
             android:textColorHint="@color/textHintColor" />
 
         <TextView
-            android:id="@+id/urlText"
+            android:id="@+id/memoText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="사이트 URL"
+            android:text="메모"
             android:textColor="@color/colorPrimary" />
 
         <EditText
-            android:id="@+id/urlEdit"
+            android:id="@+id/memoEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:ems="10"
-            android:hint="사이트 URL을 입력하세요."
-            android:inputType="textPersonName"
+            android:hint="간단한 메모를 입력하세요."
+            android:inputType="textMultiLine"
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/textHintColor" />
 

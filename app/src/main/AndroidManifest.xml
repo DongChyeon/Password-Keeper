@@ -10,10 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-        <activity android:name=".site.SiteViewActivity" />
-        <activity android:name=".site.SiteEditActivity" />
-        <activity android:name=".card.CardEditActivity" />
-        <activity android:name=".card.CardViewActivity" />
+        <activity android:name=".item.ItemViewActivity" />
+        <activity android:name=".item.ItemEditActivity" />
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".LoginActivity"
@@ -27,7 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ItemListActivity" />
+        <activity android:name=".item.ItemListActivity" />
     </application>
 
 </manifest>

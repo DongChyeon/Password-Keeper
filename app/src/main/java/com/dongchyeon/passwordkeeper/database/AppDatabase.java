@@ -2,22 +2,16 @@ package com.dongchyeon.passwordkeeper.database;
 
 import android.content.Context;
 
-import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.migration.Migration;
-import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.dongchyeon.passwordkeeper.database.dao.CardDao;
-import com.dongchyeon.passwordkeeper.database.dao.SiteDao;
-import com.dongchyeon.passwordkeeper.database.entity.Card;
-import com.dongchyeon.passwordkeeper.database.entity.Site;
+import com.dongchyeon.passwordkeeper.database.dao.ItemDao;
+import com.dongchyeon.passwordkeeper.database.entity.Item;
 
-@Database(entities = {Site.class, Card.class}, version = 3, exportSchema = true)
+@Database(entities = {Item.class}, version = 1, exportSchema = true)
 public abstract class AppDatabase extends RoomDatabase {
-    public abstract SiteDao siteDao();
-    public abstract CardDao cardDao();
+    public abstract ItemDao itemDao();
 
     private static volatile AppDatabase instance;
 
@@ -25,13 +19,13 @@ public abstract class AppDatabase extends RoomDatabase {
         if (instance == null) {
             synchronized (AppDatabase.class) {
                 instance = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "app-db")
-                        .setJournalMode(JournalMode.TRUNCATE).addMigrations(MIGRATION_2_3).build();
+                        .setJournalMode(JournalMode.TRUNCATE).build();
             }
         }
         return instance;
     }
 
-    // 데이터베이스 버전 2에서 3로 업데이트할 시 이전 사항
+    /* 데이터베이스 버전 2에서 3로 업데이트할 시 이전 사항 (데이터 이전 시 참고할 사항)
     static final Migration MIGRATION_2_3 = new Migration(2, 3) {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
@@ -64,4 +58,5 @@ public abstract class AppDatabase extends RoomDatabase {
             database.execSQL("ALTER TABLE new_Cards RENAME TO Cards");
         }
     };
+     */
 }

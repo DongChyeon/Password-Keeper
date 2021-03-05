@@ -1,4 +1,4 @@
-package com.dongchyeon.passwordkeeper.site;
+package com.dongchyeon.passwordkeeper.item;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,37 +10,35 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dongchyeon.passwordkeeper.R;
-import com.dongchyeon.passwordkeeper.database.entity.Site;
+import com.dongchyeon.passwordkeeper.database.entity.Item;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SiteAdapter extends RecyclerView.Adapter<SiteAdapter.ViewHolder> implements OnSiteItemClickListener {
-
-    private List<Site> items = new ArrayList<>();
-
-    OnSiteItemClickListener listener;
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> implements OnItemClickListener {
+    private List<Item> items = new ArrayList<>();
+    OnItemClickListener listener;
 
     @Override
     public int getItemCount() {
         return items.size();
     }
 
-    public List<Site> getSites() { return items; }
+    public List<Item> getItems() { return items; }
 
-    public void setOnItemClickListener(OnSiteItemClickListener listener) {
+    public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
     }
 
     @NonNull
     @Override
-    public SiteAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ItemAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item, viewGroup, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(SiteAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(ItemAdapter.ViewHolder viewHolder, int position) {
         viewHolder.onBind(items.get(position), position);
     }
 
@@ -68,18 +66,18 @@ public class SiteAdapter extends RecyclerView.Adapter<SiteAdapter.ViewHolder> im
             });
         }
 
-        public void onBind(Site item, int position) {
-            title.setText(((Site)item).getTitle());
+        public void onBind(Item item, int position) {
+            title.setText(((Item)item).getTitle());
             icon.setImageResource(R.drawable.ic_baseline_web_24);
         }
     }
 
-    public void setItems(List<Site> data) {
+    public void setItems(List<Item> data) {
         items = data;
         notifyDataSetChanged();
     }
 
-    public Site getItem(int position) {
+    public Item getItem(int position) {
         return items.get(position);
     }
 }

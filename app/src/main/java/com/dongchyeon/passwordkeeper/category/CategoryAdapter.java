@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dongchyeon.passwordkeeper.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> implements OnCategoryItemClickListener {
-    ArrayList<Category> items = new ArrayList<Category>();
+    private List<String> items = new ArrayList<String>();
     OnCategoryItemClickListener listener;
 
     @NonNull
@@ -27,7 +28,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        Category item = items.get(position);
+        String item = items.get(position);
         viewHolder.setItem(item);
     }
 
@@ -63,26 +64,21 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             });
         }
 
-        public void setItem(Category item) {
-            title.setText(item.getTitle());
+        public void setItem(String item) {
+            title.setText(item);
         }
     }
 
-    public void addItem(Category item) {
+    public void addItem(String item) {
         items.add(item);
     }
 
-    public void setItems(ArrayList<Category> items) {
+    public void setItems(List<String> items) {
         this.items = items;
+        notifyDataSetChanged();
     }
 
-    public Category getItem(int position) {
+    public String getItem(int position) {
         return items.get(position);
     }
-
-    public Category setItem(int position, Category item) {
-        return items.set(position, item);
-    }
-
-    public void clearItems() { items.clear(); }
 }

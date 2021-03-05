@@ -1,13 +1,14 @@
 package com.dongchyeon.passwordkeeper;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.dongchyeon.passwordkeeper.category.Category;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.dongchyeon.passwordkeeper.category.CategoryAdapter;
+import com.dongchyeon.passwordkeeper.database.AppDatabase;
 import com.dongchyeon.passwordkeeper.databinding.ActivityMainBinding;
+import com.dongchyeon.passwordkeeper.item.ItemListActivity;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -20,12 +21,11 @@ public class MainActivity extends AppCompatActivity {
 
         CategoryAdapter adapter = new CategoryAdapter();
         binding.viewPager.setAdapter(adapter);
-        adapter.addItem(new Category("사이트"));
-        adapter.addItem(new Category("카드"));
+        AppDatabase.getInstance(getApplication()).itemDao().getCategories().observe(this, adapter::setItems);
 
         adapter.setOnItemClickListener((holder, view, position) -> {
             Intent intent = new Intent(getApplicationContext(), ItemListActivity.class);
-            intent.putExtra("category", adapter.getItem(position).getTitle());
+            intent.putExtra("category", adapter.getItem(position));
             startActivity(intent);
         });
     }

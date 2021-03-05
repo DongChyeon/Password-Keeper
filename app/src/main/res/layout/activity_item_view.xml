@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".site.SiteViewActivity">
+    tools:context=".item.ItemViewActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -33,6 +33,31 @@
 
             <TextView
                 android:id="@+id/titleView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:ems="10"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/textHintColor"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/categoryLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/categoryText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="카테고리"
+                android:textColor="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/categoryView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -93,21 +118,21 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/urlLayout"
+            android:id="@+id/memoLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/urlText"
+                android:id="@+id/memoText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="사이트 URL"
+                android:text="메모"
                 android:textColor="@color/colorPrimary" />
 
             <TextView
-                android:id="@+id/urlView"
+                android:id="@+id/memoView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"

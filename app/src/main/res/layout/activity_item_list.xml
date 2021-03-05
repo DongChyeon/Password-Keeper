@@ -5,15 +5,15 @@
 
     <data>
         <variable
-            name="siteViewModel"
-            type="com.dongchyeon.passwordkeeper.site.SiteViewModel" />
+            name="itemViewModel"
+            type="com.dongchyeon.passwordkeeper.item.ItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ItemListActivity">
+        tools:context=".item.ItemListActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
