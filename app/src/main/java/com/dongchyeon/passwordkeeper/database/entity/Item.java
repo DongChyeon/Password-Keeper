@@ -2,13 +2,16 @@ package com.dongchyeon.passwordkeeper.database.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Items")
+@Entity(tableName = "Item", foreignKeys = @ForeignKey(entity = Category.class,
+        parentColumns = "title",
+        childColumns = "category"))
 public class Item {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    private int id;    // 엔터티 아이디 (기본키)
+    private long id;    // 엔터티 아이디 (기본키)
     @ColumnInfo(name = "title")
     private String title;
     @ColumnInfo(name = "category")
@@ -28,9 +31,9 @@ public class Item {
         this.memo = memo;
     }
 
-    public int getId() { return id; }
+    public long getId() { return id; }
 
-    public void setId(int id) { this.id = id; }
+    public void setId(long id) { this.id = id; }
 
     public String getTitle() { return title; }
 

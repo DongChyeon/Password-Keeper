@@ -34,7 +34,7 @@ public class ItemRepository {
     }
 
     // 아이템 수정
-    public void update(int id, String title, String category, String uid, String pw, String memo) {
+    public void update(long id, String title, String category, String uid, String pw, String memo) {
         Runnable addRunnable = () -> {
             Item item = itemDao.getItemById(id);
             item.setTitle(title);
@@ -49,7 +49,7 @@ public class ItemRepository {
     }
 
     // 아이템 삭제
-    public void delete(int id) {
+    public void delete(long id) {
         Runnable addRunnable = () -> itemDao.delete(itemDao.getItemById(id));
         Executor executor = Executors.newSingleThreadExecutor();
         executor.execute(addRunnable);

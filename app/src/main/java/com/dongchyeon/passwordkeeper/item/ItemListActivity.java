@@ -60,20 +60,23 @@ public class ItemListActivity extends AppCompatActivity {
 
         ItemViewModel itemViewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication()))
                 .get(ItemViewModel.class);
-        ItemAdapter itemAdapter = new ItemAdapter();
-        itemViewModel.getItemsByCategory(category);
-        itemViewModel.getItems().observe(this, itemAdapter::setItems);
-        binding.recyclerView.setAdapter(itemAdapter);
+        ItemAdapter adapter = new ItemAdapter();
+        if (!category.equals("전체 보기")) {
+            itemViewModel.getItemsByCategory(category);
+        }
+        // 전체 보기가 아닐 경우 카테고리에 따른 아이템을 보여줌
+        itemViewModel.getItems().observe(this, adapter::setItems);
+        binding.recyclerView.setAdapter(adapter);
 
-        itemAdapter.setOnItemClickListener((holder, view, position) -> {
+        adapter.setOnItemClickListener((holder, view, position) -> {
             Intent intent = new Intent(getApplicationContext(), ItemViewActivity.class);
 
-            intent.putExtra("id", itemAdapter.getItem(position).getId());
-            intent.putExtra("title", itemAdapter.getItem(position).getTitle());
-            intent.putExtra("category", itemAdapter.getItem(position).getCategory());
-            intent.putExtra("uid", itemAdapter.getItem(position).getUid());
-            intent.putExtra("pw", itemAdapter.getItem(position).getPassword());
-            intent.putExtra("memo", itemAdapter.getItem(position).getMemo());
+            intent.putExtra("id", adapter.getItem(position).getId());
+            intent.putExtra("title", adapter.getItem(position).getTitle());
+            intent.putExtra("category", adapter.getItem(position).getCategory());
+            intent.putExtra("uid", adapter.getItem(position).getUid());
+            intent.putExtra("pw", adapter.getItem(position).getPassword());
+            intent.putExtra("memo", adapter.getItem(position).getMemo());
 
             startActivity(intent);
         });

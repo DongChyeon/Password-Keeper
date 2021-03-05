@@ -33,11 +33,11 @@ public class ItemViewModel extends AndroidViewModel {
         repository.insert(item);
     }
 
-    public void update(int id, String title, String category, String uid, String pw, String memo) {
+    public void update(long id, String title, String category, String uid, String pw, String memo) {
         repository.update(id, title, category, uid, pw, memo);
     }
 
-    public void delete(int id) {
+    public void delete(long id) {
         repository.delete(id);
     }
 }

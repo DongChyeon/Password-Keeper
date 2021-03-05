@@ -13,7 +13,7 @@ import java.util.List;
 
 @Dao
 public interface ItemDao {
-    @Query("SELECT * FROM Items")
+    @Query("SELECT * FROM Item")
     LiveData<List<Item>> getAll();
 
     @Insert
@@ -25,12 +25,9 @@ public interface ItemDao {
     @Delete
     void delete(Item item);
 
-    @Query("SELECT * FROM Items WHERE id = :id")
-    Item getItemById(int id);
+    @Query("SELECT * FROM Item WHERE id = :id")
+    Item getItemById(long id);
 
-    @Query("SELECT * FROM Items WHERE category = :category")
+    @Query("SELECT * FROM Item WHERE category = :category")
     LiveData<List<Item>> getItemsByCategory(String category);
-
-    @Query("SELECT DISTINCT category FROM Items")
-    LiveData<List<String>> getCategories();
 }

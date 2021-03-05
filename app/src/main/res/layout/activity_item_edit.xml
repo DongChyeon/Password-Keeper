@@ -44,16 +44,12 @@
             android:text="카테고리"
             android:textColor="@color/colorPrimary" />
 
-        <EditText
+        <Spinner
             android:id="@+id/categoryEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:ems="10"
-            android:hint="카테고리를 입력하세요."
-            android:inputType="textPersonName"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/textHintColor" />
+            android:textColor="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/idText"

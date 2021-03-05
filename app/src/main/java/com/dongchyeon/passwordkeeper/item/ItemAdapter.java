@@ -24,7 +24,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> im
         return items.size();
     }
 
-    public List<Item> getItems() { return items; }
+    public List<Item> getItems() {
+        return items;
+    }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
@@ -55,6 +57,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> im
 
         public ViewHolder(View view) {
             super(view);
+
             title = view.findViewById(R.id.titleText);
             icon = view.findViewById(R.id.icon);
 

@@ -3,18 +3,20 @@ package com.dongchyeon.passwordkeeper.category;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dongchyeon.passwordkeeper.R;
+import com.dongchyeon.passwordkeeper.database.entity.Category;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> implements OnCategoryItemClickListener {
-    private List<String> items = new ArrayList<String>();
+    private List<Category> items = new ArrayList<>();
     OnCategoryItemClickListener listener;
 
     @NonNull
@@ -28,13 +30,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        String item = items.get(position);
+        Category item = items.get(position);
         viewHolder.setItem(item);
     }
 
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public List<Category> getItems() {
+        return items;
     }
 
     public void setOnItemClickListener(OnCategoryItemClickListener listener) {
@@ -48,13 +54,15 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         }
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView title;
+        ImageView image;
 
         public ViewHolder(View itemView, final CategoryAdapter listener) {
             super(itemView);
 
             title = itemView.findViewById(R.id.titleText);
+            image = itemView.findViewById(R.id.imageView);
 
             itemView.setOnClickListener(view -> {
                 int position = getAdapterPosition();
@@ -64,21 +72,32 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             });
         }
 
-        public void setItem(String item) {
-            title.setText(item);
+        public void setItem(Category item) {
+            title.setText(item.getTitle());
+            if (item.getType().equals("ADD")) {
+                image.setImageResource(R.drawable.ic_add_button);
+            } else {
+                image.setImageResource(R.drawable.applogo);
+            }
         }
     }
 
-    public void addItem(String item) {
+    public void addItem(Category item) {
         items.add(item);
-    }
-
-    public void setItems(List<String> items) {
-        this.items = items;
         notifyDataSetChanged();
     }
 
-    public String getItem(int position) {
+    public void addItems(List<Category> items) {
+        for (Category item : items) {
+            addItem(item);
+        }
+    }
+
+    public void setItems(List<Category> items) {
+        this.items = items;
+    }
+
+    public Category getItem(int position) {
         return items.get(position);
     }
 }
