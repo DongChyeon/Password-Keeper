@@ -18,10 +18,10 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_marginBottom="12dp"
-            app:srcCompat="@drawable/applogo" />
+            app:srcCompat="@drawable/lock_icon" />
 
         <TextView
             android:id="@+id/titleText"
@@ -30,7 +30,7 @@
             android:gravity="center_horizontal"
             android:text="카테고리"
             android:textColor="@color/colorPrimary"
-            android:textSize="24sp" />
+            android:textSize="30sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

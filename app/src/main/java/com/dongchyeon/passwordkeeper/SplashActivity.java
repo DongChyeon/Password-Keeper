@@ -24,13 +24,14 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(() -> {
             if (isRegistered) {
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-                finish();   // 비밀번호를 설정한 적이 있으면 로그인 페이지로 이동
+                intent.putExtra("type", "login");
+                startActivity(intent);    // 비밀번호를 설정한 적이 있으면 로그인 페이지로 이동
             } else {
                 Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
-                startActivity(intent);
-                finish();   // 아니면 비밀번호 설정 페이지로 이동
+                intent.putExtra("type", "register");
+                startActivity(intent); // 아니면 비밀번호 설정 페이지로 이동
             }
+            finish();
         }, 1000);
     }
 }

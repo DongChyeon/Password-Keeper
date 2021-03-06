@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dongchyeon.passwordkeeper.databinding.ActivityRegisterBinding;
 
+import java.util.Objects;
+
 public class RegisterActivity extends AppCompatActivity {
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
@@ -21,6 +23,16 @@ public class RegisterActivity extends AppCompatActivity {
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // 비밀번호 변경 시 재설정 페이지로도 사용됨
+        Intent intent = getIntent();
+        String type = intent.getStringExtra("type");
+        if (type.equals("reset")) {
+            Objects.requireNonNull(getSupportActionBar()).setTitle("비밀번호 재설정");
+            binding.explainText.setText("새 비밀번호를 입력해주세요.");
+        } else {
+            Objects.requireNonNull(getSupportActionBar()).setTitle("초기 비밀번호 설정");
+        }
+
         prefs = getSharedPreferences("Pref", MODE_PRIVATE);
 
         binding.confirmBtn.setOnClickListener(view -> {
@@ -30,8 +42,9 @@ public class RegisterActivity extends AppCompatActivity {
                 editor.putBoolean("isRegistered", true);
                 editor.apply(); // 비밀번호 입력칸과 비밀번호 확인칸이 같을 시 비밀번호 설정 완료
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                if (!type.equals("reset")) {
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                }
                 finish();
             } else {
                 Toast.makeText(getApplicationContext(), "두 입력칸의 비밀번호가 일치하는지 확인하세요.", Toast.LENGTH_SHORT).show();

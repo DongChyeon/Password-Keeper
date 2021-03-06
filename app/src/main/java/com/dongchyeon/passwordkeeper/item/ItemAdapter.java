@@ -65,7 +65,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> im
             super(view);
 
             title = view.findViewById(R.id.titleText);
-            icon = view.findViewById(R.id.icon);
 
             view.setOnClickListener(view1 -> {
                 int position = getAdapterPosition();
@@ -93,7 +92,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> im
 
         public void onBind(Item item, int position) {
             title.setText(((Item)item).getTitle());
-            icon.setImageResource(R.drawable.ic_baseline_web_24);
         }
     }
 

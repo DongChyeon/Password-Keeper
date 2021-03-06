@@ -11,7 +11,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,15 +21,21 @@
             android:id="@+id/titleLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/gray_rounded_button"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/titleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
                 android:text="제목"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/titleView"
@@ -38,7 +44,6 @@
                 android:layout_margin="10dp"
                 android:ems="10"
                 android:textColor="@color/colorPrimary"
-                android:textColorHint="@color/textHintColor"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -46,15 +51,22 @@
             android:id="@+id/categoryLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/gray_rounded_button"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/categoryText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
                 android:text="카테고리"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/categoryView"
@@ -63,7 +75,6 @@
                 android:layout_margin="10dp"
                 android:ems="10"
                 android:textColor="@color/colorPrimary"
-                android:textColorHint="@color/textHintColor"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -71,15 +82,22 @@
             android:id="@+id/idLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/gray_rounded_button"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/idText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
                 android:text="아이디"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/idView"
@@ -88,7 +106,6 @@
                 android:layout_margin="10dp"
                 android:ems="10"
                 android:textColor="@color/colorPrimary"
-                android:textColorHint="@color/textHintColor"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -96,15 +113,22 @@
             android:id="@+id/pwLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/gray_rounded_button"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/pwText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
                 android:text="비밀번호"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/pwView"
@@ -113,7 +137,6 @@
                 android:layout_margin="10dp"
                 android:ems="10"
                 android:textColor="@color/colorPrimary"
-                android:textColorHint="@color/textHintColor"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -121,15 +144,22 @@
             android:id="@+id/memoLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/gray_rounded_button"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/memoText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
                 android:text="메모"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/memoView"
@@ -138,7 +168,6 @@
                 android:layout_margin="10dp"
                 android:ems="10"
                 android:textColor="@color/colorPrimary"
-                android:textColorHint="@color/textHintColor"
                 android:textSize="18sp" />
         </LinearLayout>
 

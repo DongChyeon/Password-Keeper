@@ -16,6 +16,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Objects;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -46,6 +47,12 @@ public class ItemEditActivity extends AppCompatActivity {
         String uid = intent.getStringExtra("uid");
         String pw = intent.getStringExtra("pw");
         String memo = intent.getStringExtra("memo");
+
+        if (id == -1) {
+            Objects.requireNonNull(getSupportActionBar()).setTitle("추가");
+        } else {
+            Objects.requireNonNull(getSupportActionBar()).setTitle("편집");
+        }
 
         binding.titleEdit.setText(title);
         binding.categoryEdit.setText(category);
@@ -79,7 +86,7 @@ public class ItemEditActivity extends AppCompatActivity {
             }
             String memoText = binding.memoEdit.getText().toString();
 
-            if (categoryText.equals("전체 보기") || categoryText.equals("새 항목 추가")) {
+            if (categoryText.equals("전체 보기") || categoryText.equals("새 항목 추가") || categoryText.equals("비밀번호 변경")) {
                 Toast.makeText(getApplicationContext(), "불가능한 카테고리명입니다.", Toast.LENGTH_SHORT).show();
             } else if (titleText.equals("")) {
                 Toast.makeText(getApplicationContext(), "제목은 필수 입력 항목입니다.", Toast.LENGTH_SHORT).show();

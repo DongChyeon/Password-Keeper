@@ -11,6 +11,8 @@ import com.dongchyeon.passwordkeeper.databinding.ActivityMainBinding;
 import com.dongchyeon.passwordkeeper.item.ItemEditActivity;
 import com.dongchyeon.passwordkeeper.item.ItemListActivity;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private ItemRepository repository;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+        Objects.requireNonNull(getSupportActionBar()).setTitle("메인 메뉴");
         setContentView(binding.getRoot());
 
         initUI();
@@ -37,16 +40,21 @@ public class MainActivity extends AppCompatActivity {
         repository = new ItemRepository(getApplication());
         if (repository.getAllCategories().size() == 0) {
             adapter.addItem("새 항목 추가");
+            adapter.addItem("비밀번호 변경");
         } else {
             adapter.addItem("전체 보기");
             adapter.addItems(repository.getAllCategories());
             adapter.addItem("새 항목 추가");
+            adapter.addItem("비밀번호 변경");
         }
         binding.viewPager.setAdapter(adapter);
 
         adapter.setOnItemClickListener((holder, view, position) -> {
             if (adapter.getItem(position).equals("새 항목 추가")) {
-                Intent intent = new Intent(getApplicationContext(), ItemEditActivity.class);
+                startActivity(new Intent(getApplicationContext(), ItemEditActivity.class));
+            } else if (adapter.getItem(position).equals("비밀번호 변경")) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                intent.putExtra("type", "reset");
                 startActivity(intent);
             } else {
                 Intent intent = new Intent(getApplicationContext(), ItemListActivity.class);

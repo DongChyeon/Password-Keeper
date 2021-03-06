@@ -75,8 +75,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             title.setText(item);
             if (item.equals("새 항목 추가")) {
                 image.setImageResource(R.drawable.ic_add_button);
+            } else if (item.equals("비밀번호 변경")) {
+                image.setImageResource(R.drawable.ic_reset_password);
             } else {
-                image.setImageResource(R.drawable.applogo);
+                image.setImageResource(R.drawable.lock_icon);
             }
         }
     }

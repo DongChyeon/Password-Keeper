@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat;
 
 import com.dongchyeon.passwordkeeper.databinding.ActivityLoginBinding;
 
+import java.util.Objects;
 import java.util.concurrent.Executor;
 
 public class LoginActivity extends AppCompatActivity {
@@ -29,13 +30,27 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // 비밀번호 변경 시 확인 페이지로도 사용됨
+        Intent intent = getIntent();
+        String type = intent.getStringExtra("type");
+        if (type.equals("reset")) {
+            Objects.requireNonNull(getSupportActionBar()).setTitle("비밀번호 확인");
+        } else {
+            Objects.requireNonNull(getSupportActionBar()).setTitle("로그인");
+        }
+
         prefs = getSharedPreferences("Pref", MODE_PRIVATE);
 
         binding.loginBtn.setOnClickListener(view -> {
             if ((binding.inputPassword.getText().toString()).equals(prefs.getString("password", null))) {
                 Toast.makeText(getApplicationContext(), "인증 성공", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                if (type.equals("reset")) {
+                    Intent intent2 = new Intent(getApplicationContext(), RegisterActivity.class);
+                    intent2.putExtra("type", "reset");
+                    startActivity(intent2);
+                } else {
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                }
                 finish();
             }
             else {

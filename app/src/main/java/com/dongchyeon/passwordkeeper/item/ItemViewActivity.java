@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.dongchyeon.passwordkeeper.databinding.ActivityItemViewBinding;
 
+import java.util.Objects;
+
 public class ItemViewActivity extends AppCompatActivity {
     private ActivityItemViewBinding binding;
 
@@ -17,6 +19,7 @@ public class ItemViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityItemViewBinding.inflate(getLayoutInflater());
+
         setContentView(binding.getRoot());
 
         initUI();
@@ -35,6 +38,8 @@ public class ItemViewActivity extends AppCompatActivity {
         String uid = intent.getStringExtra("uid");
         String pw = intent.getStringExtra("pw");
         String memo = intent.getStringExtra("memo");
+
+        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
 
         binding.titleView.setText(title);
         binding.categoryView.setText(category);
