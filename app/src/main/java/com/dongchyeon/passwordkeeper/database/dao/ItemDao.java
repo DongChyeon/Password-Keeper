@@ -30,4 +30,7 @@ public interface ItemDao {
 
     @Query("SELECT * FROM Item WHERE category = :category")
     LiveData<List<Item>> getItemsByCategory(String category);
+
+    @Query("SELECT DISTINCT category FROM Item")
+    List<String> getAllCategories();
 }

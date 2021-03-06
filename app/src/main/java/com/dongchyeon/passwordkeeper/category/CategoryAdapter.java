@@ -10,13 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dongchyeon.passwordkeeper.R;
-import com.dongchyeon.passwordkeeper.database.entity.Category;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> implements OnCategoryItemClickListener {
-    private List<Category> items = new ArrayList<>();
+    private List<String> items = new ArrayList<>();
     OnCategoryItemClickListener listener;
 
     @NonNull
@@ -30,7 +29,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        Category item = items.get(position);
+        String item = items.get(position);
         viewHolder.setItem(item);
     }
 
@@ -39,7 +38,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         return items.size();
     }
 
-    public List<Category> getItems() {
+    public List<String> getItems() {
         return items;
     }
 
@@ -72,9 +71,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             });
         }
 
-        public void setItem(Category item) {
-            title.setText(item.getTitle());
-            if (item.getType().equals("ADD")) {
+        public void setItem(String item) {
+            title.setText(item);
+            if (item.equals("새 항목 추가")) {
                 image.setImageResource(R.drawable.ic_add_button);
             } else {
                 image.setImageResource(R.drawable.applogo);
@@ -82,22 +81,22 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         }
     }
 
-    public void addItem(Category item) {
+    public void addItem(String item) {
         items.add(item);
         notifyDataSetChanged();
     }
 
-    public void addItems(List<Category> items) {
-        for (Category item : items) {
+    public void addItems(List<String> items) {
+        for (String item : items) {
             addItem(item);
         }
     }
 
-    public void setItems(List<Category> items) {
+    public void setItems(List<String> items) {
         this.items = items;
     }
 
-    public Category getItem(int position) {
+    public String getItem(int position) {
         return items.get(position);
     }
 }

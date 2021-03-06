@@ -26,10 +26,10 @@ public class ItemViewActivity extends AppCompatActivity {
         ItemViewModel itemViewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication()))
                 .get(ItemViewModel.class);
 
-        // 메인 액티비티로부터 인텐트를 넘겨받음
+        // ItemListActivity 로부터 인텐트를 넘겨받음
         Intent intent = getIntent();
 
-        long id = intent.getIntExtra("id", -1);
+        int id = intent.getIntExtra("id", -1);
         String title = intent.getStringExtra("title");
         String category = intent.getStringExtra("category");
         String uid = intent.getStringExtra("uid");
@@ -50,6 +50,7 @@ public class ItemViewActivity extends AppCompatActivity {
 
             intent2.putExtra("id", id);
             intent2.putExtra("title", title);
+            intent2.putExtra("category", category);
             intent2.putExtra("uid", uid);
             intent2.putExtra("pw", pw);
             intent2.putExtra("memo", memo);

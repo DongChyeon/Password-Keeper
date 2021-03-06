@@ -12,8 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dongchyeon.passwordkeeper.R;
 import com.dongchyeon.passwordkeeper.database.entity.Item;
 
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> implements OnItemClickListener {
     private List<Item> items = new ArrayList<>();
@@ -24,9 +32,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> im
         return items.size();
     }
 
-    public List<Item> getItems() {
-        return items;
-    }
+    public List<Item> getItems() { return items; }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
@@ -45,7 +51,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> im
     }
 
     @Override
-    public void onItemClick(ViewHolder holder, View view, int position) {
+    public void onItemClick(ViewHolder holder, View view, int position) throws NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, InvalidKeyException {
         if (listener != null) {
             listener.onItemClick(holder, view, position);
         }
@@ -64,7 +70,23 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> im
             view.setOnClickListener(view1 -> {
                 int position = getAdapterPosition();
                 if (listener != null) {
-                    listener.onItemClick(ViewHolder.this, view1, position);
+                    try {
+                        listener.onItemClick(ViewHolder.this, view1, position);
+                    } catch (NoSuchPaddingException e) {
+                        e.printStackTrace();
+                    } catch (InvalidKeyException e) {
+                        e.printStackTrace();
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    } catch (IllegalBlockSizeException e) {
+                        e.printStackTrace();
+                    } catch (BadPaddingException e) {
+                        e.printStackTrace();
+                    } catch (NoSuchAlgorithmException e) {
+                        e.printStackTrace();
+                    } catch (InvalidAlgorithmParameterException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
         }

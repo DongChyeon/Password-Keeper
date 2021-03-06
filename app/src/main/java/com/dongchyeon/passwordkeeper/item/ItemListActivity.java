@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.dongchyeon.passwordkeeper.AES256Chiper;
 import com.dongchyeon.passwordkeeper.R;
 import com.dongchyeon.passwordkeeper.databinding.ActivityItemListBinding;
 
@@ -52,6 +53,7 @@ public class ItemListActivity extends AppCompatActivity {
     }
 
     private void initUI() {
+        // MainActivity 로부터 인텐트를 넘겨받음
         intent = getIntent();
         category = intent.getStringExtra("category");
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -75,7 +77,8 @@ public class ItemListActivity extends AppCompatActivity {
             intent.putExtra("title", adapter.getItem(position).getTitle());
             intent.putExtra("category", adapter.getItem(position).getCategory());
             intent.putExtra("uid", adapter.getItem(position).getUid());
-            intent.putExtra("pw", adapter.getItem(position).getPassword());
+            // 비밀번호 복호화
+            intent.putExtra("pw", AES256Chiper.AES_Decode(adapter.getItem(position).getPassword(), getApplicationContext().getResources().getString(R.string.SECRET_KEY)));
             intent.putExtra("memo", adapter.getItem(position).getMemo());
 
             startActivity(intent);

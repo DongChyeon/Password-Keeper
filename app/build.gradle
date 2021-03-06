@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
 
+def Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -12,6 +15,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        resValue("string", "SECRET_KEY", properties.getProperty("secret.key"))
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
