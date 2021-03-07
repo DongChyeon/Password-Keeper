@@ -2,6 +2,7 @@ package com.dongchyeon.passwordkeeper.item;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Toast;
 
@@ -49,6 +50,11 @@ public class ItemViewActivity extends AppCompatActivity {
 
         hideEmptyItem();
 
+        binding.pwLayout.setOnClickListener(v -> {
+            binding.pwText.setText("비밀번호");
+            binding.pwView.setInputType(InputType.TYPE_CLASS_TEXT);
+        });
+        
         // 버튼 세팅
         binding.editBtn.setOnClickListener(view -> {
             Intent intent2 = new Intent(getApplicationContext(), ItemEditActivity.class);

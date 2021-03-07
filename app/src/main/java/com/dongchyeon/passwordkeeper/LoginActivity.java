@@ -52,8 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 }
                 finish();
-            }
-            else {
+            } else {
                 Toast.makeText(getApplicationContext(), "비밀번호가 틀립니다.", Toast.LENGTH_SHORT).show();
             }
         }); // prefs에 저장된 비밀번호(가입할 때 저장한 비밀번호)를 입력했을 시 로그인
@@ -63,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
-                if (errString != "비밀번호로 로그인 하시겠습니까?") {
+                if (errString != "비밀번호로 로그인 하기") {
                     Toast.makeText(getApplicationContext(), errString, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -72,8 +71,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 Toast.makeText(getApplicationContext(), "인증 성공", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                if (type.equals("reset")) {
+                    Intent intent2 = new Intent(getApplicationContext(), RegisterActivity.class);
+                    intent2.putExtra("type", "reset");
+                    startActivity(intent2);
+                } else {
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                }
                 finish();
             }
 
@@ -85,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
 
         promptInfo = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle("지문 인식")
-                .setNegativeButtonText("비밀번호로 로그인 하시겠습니까?")
+                .setNegativeButtonText("비밀번호로 로그인 하기")
                 .build();
         biometricPrompt.authenticate(promptInfo);   // 지문 인식 창 띄우기
     }

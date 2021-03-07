@@ -109,7 +109,7 @@
             android:layout_margin="10dp"
             android:ems="10"
             android:hint="비밀번호를 입력하세요."
-            android:inputType="text"
+            android:inputType="textPassword"
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/textHintColor" />
 

@@ -43,7 +43,10 @@ public class RegisterActivity extends AppCompatActivity {
                 editor.apply(); // 비밀번호 입력칸과 비밀번호 확인칸이 같을 시 비밀번호 설정 완료
 
                 if (!type.equals("reset")) {
+                    Toast.makeText(getApplicationContext(), "비밀번호가 설정되었습니다.", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                } else {
+                    Toast.makeText(getApplicationContext(), "비밀번호가 재설정되었습니다.", Toast.LENGTH_SHORT).show();
                 }
                 finish();
             } else {
