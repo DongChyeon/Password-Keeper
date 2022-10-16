@@ -5,15 +5,15 @@
 
     <data>
         <variable
-            name="itemViewModel"
-            type="com.dongchyeon.passwordkeeper.item.ItemViewModel" />
+            name="memoViewModel"
+            type="com.dongchyeon.passwordkeeper.viewmodel.MemoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".item.ItemListActivity">
+        tools:context=".view.MemoListActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
