@@ -26,11 +26,11 @@ class MemoEditActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        initUI()
+        init()
     }
 
-    private fun initUI() {
-        type = intent.getStringExtra("type") ?: "추가"
+    private fun init() {
+        type = intent.getStringExtra("type")!!
 
         if (type == "insert") {
             Objects.requireNonNull(supportActionBar)?.title = "추가"
@@ -67,20 +67,20 @@ class MemoEditActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "카테고리는 필수 입력 항목입니다.", Toast.LENGTH_SHORT).show()
             } else if (uidText == "") {
                 Toast.makeText(applicationContext, "아이디는 필수 입력 항목입니다.", Toast.LENGTH_SHORT).show()
-            } else if (pwText == "") {
+            } else if (binding.pwEdit.text.toString() == "") {
                 Toast.makeText(applicationContext, "비밀번호는 필수 입력 항목입니다.", Toast.LENGTH_SHORT).show()
             } else if (type == "update") {
                 memo.title = titleText
                 memo.uid = uidText
                 memo.category = categoryText
-                memo.password = pwText!!
+                memo.password = pwText
                 memo.memo = memoText
                 viewModel.update(memo) // 이미 있는 아이템일 경우 업데이트
 
                 Toast.makeText(applicationContext, "수정되었습니다.", Toast.LENGTH_SHORT).show()
                 finish()
             } else {
-                val item = Memo(titleText, categoryText, uidText, pwText!!, memoText)
+                val item = Memo(titleText, categoryText, uidText, pwText, memoText)
                 viewModel.insert(item)
                 Toast.makeText(applicationContext, "추가되었습니다.", Toast.LENGTH_SHORT).show()
                 finish()

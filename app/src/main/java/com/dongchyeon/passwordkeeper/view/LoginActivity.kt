@@ -28,6 +28,10 @@ class LoginActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        init()
+    }
+
+    fun init() {
         // 비밀번호 변경 시 확인 페이지로도 사용됨
         val intent = intent
         val type = intent.getStringExtra("type")

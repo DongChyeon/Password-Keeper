@@ -25,10 +25,10 @@ class MemoListActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_memo_list)
         binding.lifecycleOwner = this
 
-        initUI()
+        init()
     }
 
-    private fun initUI() {
+    private fun init() {
         // MainActivity 로부터 인텐트를 넘겨받음
         intent = intent
         category = intent.getStringExtra("category")
@@ -57,7 +57,9 @@ class MemoListActivity : AppCompatActivity() {
         })
 
         binding.addBtn.setOnClickListener {
-            startActivity(Intent(applicationContext, MemoEditActivity::class.java))
+            val intent = Intent(applicationContext, MemoEditActivity::class.java)
+            intent.putExtra("type", "insert")
+            startActivity(intent)
         }
     }
 }

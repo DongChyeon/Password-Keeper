@@ -28,13 +28,12 @@
                 android:id="@+id/titleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:text="제목"
                 android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -44,7 +43,8 @@
                 android:layout_margin="10dp"
                 android:ems="10"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="16sp"
+                android:textStyle="normal" />
         </LinearLayout>
 
         <LinearLayout
@@ -59,13 +59,12 @@
                 android:id="@+id/categoryText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:text="카테고리"
                 android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -75,7 +74,8 @@
                 android:layout_margin="10dp"
                 android:ems="10"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="16sp"
+                android:textStyle="normal" />
         </LinearLayout>
 
         <LinearLayout
@@ -90,13 +90,12 @@
                 android:id="@+id/idText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:text="아이디"
                 android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -106,7 +105,8 @@
                 android:layout_margin="10dp"
                 android:ems="10"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="16sp"
+                android:textStyle="normal" />
         </LinearLayout>
 
         <LinearLayout
@@ -121,13 +121,12 @@
                 android:id="@+id/pwText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:text="비밀번호 (클릭해서 확인하세요.)"
                 android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -138,7 +137,8 @@
                 android:ems="10"
                 android:inputType="textPassword"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="16sp"
+                android:textStyle="normal" />
         </LinearLayout>
 
         <LinearLayout
@@ -153,13 +153,12 @@
                 android:id="@+id/memoText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:text="메모"
                 android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -169,7 +168,8 @@
                 android:layout_margin="10dp"
                 android:ems="10"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="16sp"
+                android:textStyle="normal" />
         </LinearLayout>
 
     </LinearLayout>
@@ -180,10 +180,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginBottom="30dp"
         android:clickable="true"
+        android:contentDescription="@string/delete"
+        android:focusable="true"
         app:backgroundTint="#FF0000"
+        app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_baseline_delete_24" />
@@ -193,9 +195,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
         android:clickable="true"
+        android:contentDescription="@string/update"
+        android:focusable="true"
+        app:backgroundTint="@color/colorAccent"
+        app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_baseline_edit_24" />

@@ -46,7 +46,7 @@ object AES256Chiper {
     fun AES_Encode(str: String, secretKey: String): String {
         val textBytes = str.toByteArray(charset("UTF-8"))
         val ivSpec: AlgorithmParameterSpec = IvParameterSpec(ivBytes)
-        val newKey = SecretKeySpec(secretKey.toByteArray(charset("UTF-8")), "AES")
+        val newKey = SecretKeySpec(secretKey.toByteArray(Charsets.UTF_8), "AES")
         val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
         cipher.init(Cipher.ENCRYPT_MODE, newKey, ivSpec)
         return Base64.encodeToString(cipher.doFinal(textBytes), 0)

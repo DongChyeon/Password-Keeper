@@ -6,5 +6,33 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textViewStyle">@style/textViewFontStyle</item>
+        <item name="buttonStyle">@style/buttonFontStyle</item>
+        <item name="editTextStyle">@style/editTextStyle</item>
+        <item name="radioButtonStyle">@style/radioButtonFontStyle</item>
+        <item name="checkboxStyle">@style/checkboxFontStyle</item>
+    </style>
+    <!-- Custom font 적용 -->
+    <style name="textViewFontStyle" parent="@android:style/Widget.DeviceDefault.TextView">
+        <item name="android:fontFamily">@font/notosanskr_font_family</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="buttonFontStyle" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
+        <item name="android:fontFamily">@font/notosanskr_font_family</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="editTextStyle" parent="@android:style/Widget.DeviceDefault.EditText">
+        <item name="android:fontFamily">@font/notosanskr_font_family</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:backgroundTint">@color/textHintColor</item>
+        <item name="android:textCursorDrawable">@drawable/edittext_cursor</item>
+    </style>
+    <style name="radioButtonFontStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.RadioButton">
+        <item name="android:fontFamily">@font/notosanskr_font_family</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="checkboxFontStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.CheckBox">
+        <item name="android:fontFamily">@font/notosanskr_font_family</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
 </resources>

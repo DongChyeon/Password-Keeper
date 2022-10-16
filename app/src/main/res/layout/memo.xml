@@ -40,8 +40,8 @@
                     android:layout_weight="0"
                     android:text="제목"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="28sp" />
-
+                    android:textSize="28sp"
+                    android:textStyle="normal" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>

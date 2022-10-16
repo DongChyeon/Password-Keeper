@@ -51,13 +51,7 @@ class CategoryAdapter : ListAdapter<String, CategoryAdapter.ViewHolder>(Category
 
         fun bind(item: String) {
             title.text = item
-            if (item == "새 항목 추가") {
-                image.setImageResource(R.drawable.ic_add_button)
-            } else if (item == "비밀번호 변경") {
-                image.setImageResource(R.drawable.ic_reset_password)
-            } else {
-                image.setImageResource(R.drawable.lock_icon)
-            }
+            image.setImageResource(R.drawable.lock_icon)
         }
     }
 

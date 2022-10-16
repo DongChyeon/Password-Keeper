@@ -35,36 +35,29 @@ class MainActivity : AppCompatActivity() {
             categories.let { adapter.submitList(categories) }
         }
 
-        /*
-        if (adapter.itemCount == 0) {
-            categories.add("새 항목 추가")
-            categories.add("비밀번호 변경")
-        } else {
-            categories.add("전체 보기")
-            categories.add("새 항목 추가")
-            categories.add("비밀번호 변경")
-        }
-        */
-
         adapter.setOnItemClickListener(object : CategoryAdapter.OnItemClickListener {
             override fun onItemClick(
                 view: View,
                 position: Int
             ) {
-                if (adapter.getCategory(position) == "새 항목 추가") {
-                    val intent = Intent(applicationContext, MemoEditActivity::class.java)
-                    intent.putExtra("type", "insert")
-                    startActivity(intent)
-                } else if (adapter.getCategory(position) == "비밀번호 변경") {
-                    val intent = Intent(applicationContext, LoginActivity::class.java)
-                    intent.putExtra("type", "reset")
-                    startActivity(intent)
-                } else {
-                    val intent = Intent(applicationContext, MemoListActivity::class.java)
-                    intent.putExtra("category", adapter.getCategory(position))
-                    startActivity(intent)
-                }
+                val intent = Intent(applicationContext, MemoListActivity::class.java)
+                intent.putExtra("category", adapter.getCategory(position))
+                startActivity(intent)
             }
         })
+
+        if (adapter.itemCount == 0) binding.textView.visibility = View.GONE
+
+        binding.changePwBtn.setOnClickListener {
+            val intent = Intent(applicationContext, LoginActivity::class.java)
+            intent.putExtra("type", "reset")
+            startActivity(intent)
+        }
+
+        binding.addBtn.setOnClickListener {
+            val intent = Intent(applicationContext, MemoEditActivity::class.java)
+            intent.putExtra("type", "insert")
+            startActivity(intent)
+        }
     }
 }

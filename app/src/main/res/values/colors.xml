@@ -4,6 +4,6 @@
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#000000</color>
-    <color name="textHintColor">#BCB6B6</color>
+    <color name="textHintColor">#757575</color>
     <color name="buttonColor">#dddde2</color>
 </resources>

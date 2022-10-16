@@ -28,10 +28,10 @@ class MemoViewActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        initUI()
+        init()
     }
 
-    private fun initUI() {
+    private fun init() {
         // MemoListActivity 로부터 인텐트를 넘겨받음
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             memo = intent.getParcelableExtra("memo", Memo::class.java)!!
