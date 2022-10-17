@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dongchyeon.passwordkeeper.R
 import com.dongchyeon.passwordkeeper.adapter.MemoAdapter
 import com.dongchyeon.passwordkeeper.databinding.ActivityMemoListBinding
 import com.dongchyeon.passwordkeeper.viewmodel.MemoViewModel
@@ -22,8 +20,9 @@ class MemoListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_memo_list)
-        binding.lifecycleOwner = this
+        binding = ActivityMemoListBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         init()
     }
