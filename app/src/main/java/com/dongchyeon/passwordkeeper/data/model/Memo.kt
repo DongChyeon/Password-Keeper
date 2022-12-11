@@ -1,4 +1,4 @@
-package com.dongchyeon.passwordkeeper.data.room
+package com.dongchyeon.passwordkeeper.data.model
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

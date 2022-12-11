@@ -1,10 +1,11 @@
-package com.dongchyeon.passwordkeeper.data.room
+package com.dongchyeon.passwordkeeper.data.datasource
 
 import androidx.room.*
+import com.dongchyeon.passwordkeeper.data.model.Memo
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface MemosDao {
+interface MemoDao {
     @Query("SELECT * FROM Memos")
     fun getAllMemos(): Flow<List<Memo>>
 
@@ -18,7 +19,7 @@ interface MemosDao {
     suspend fun deleteMemo(memo: Memo)
 
     @Query("SELECT * FROM Memos WHERE id = :id")
-    suspend fun getMemoById(id: Long): Memo
+    fun getMemoById(id: Long): Flow<Memo>
 
     @Query("SELECT * FROM Memos WHERE category = :category")
     fun getMemosByCategory(category: String): Flow<List<Memo>>

@@ -10,18 +10,18 @@
         android:roundIcon="@mipmap/ic_app_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.MainActivity" />
-        <activity android:name=".view.MemoViewActivity" />
-        <activity android:name=".view.MemoEditActivity" />
-        <activity android:name=".view.RegisterActivity" />
+        <activity android:name=".presentation.view.MainActivity" />
+        <activity android:name=".presentation.view.MemoViewActivity" />
+        <activity android:name=".presentation.view.MemoEditActivity" />
+        <activity android:name=".presentation.view.RegisterActivity" />
         <activity
-            android:name=".view.LoginActivity"
+            android:name=".presentation.view.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.MemoListActivity" />
+        <activity android:name=".presentation.view.MemoListActivity" />
     </application>
 </manifest>

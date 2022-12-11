@@ -1,75 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.RegisterActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/explainText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:text="앞으로 사용할 비밀번호를 설정해주세요."
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <data>
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="180dp"
-        android:layout_marginRight="50dp"
-        android:background="@drawable/black_rounded_rectangle"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        <variable
+            name="viewModel"
+            type="com.dongchyeon.passwordkeeper.presentation.viewmodel.AuthViewModel" />
+    </data>
 
-        <EditText
-            android:id="@+id/newPassword"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:hint="새로운 비밀번호"
-            android:inputType="textPassword"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            android:textColorHint="@color/textHintColor" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.view.RegisterActivity">
 
-        <EditText
-            android:id="@+id/confirmPassword"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_margin="5dp"
-            android:hint="비밀번호 확인"
-            android:inputType="textPassword"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            android:textColorHint="@color/textHintColor" />
-
-        <Button
-            android:id="@+id/confirmBtn"
+        <TextView
+            android:id="@+id/explainText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/gray_rounded_button"
-            android:text="확인"
+            android:layout_marginBottom="30dp"
+            android:text="앞으로 사용할 비밀번호를 설정해주세요."
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="180dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/black_rounded_rectangle"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <EditText
+                android:id="@+id/newPassword"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:hint="새로운 비밀번호"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                android:textColorHint="@color/textHintColor" />
+
+            <EditText
+                android:id="@+id/confirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="5dp"
+                android:hint="비밀번호 확인"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                android:textColorHint="@color/textHintColor" />
+
+            <Button
+                android:id="@+id/confirmBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/gray_rounded_button"
+                android:text="확인"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

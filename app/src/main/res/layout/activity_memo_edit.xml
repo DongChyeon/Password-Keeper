@@ -1,168 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".view.MemoEditActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dongchyeon.passwordkeeper.presentation.viewmodel.MemoViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:context=".presentation.view.MemoEditActivity">
 
-        <TextView
-            android:id="@+id/titleText"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:text="제목"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/titleEdit"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
             android:layout_margin="5dp"
-            android:hint="제목을 입력하세요."
-            android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/textHintColor"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/categoryText"
-            android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="제목"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/titleEdit"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="5dp"
+                android:hint="제목을 입력하세요."
+                android:ems="10"
+                android:inputType="text"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/textHintColor"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/categoryText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="카테고리"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/categoryEdit"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="5dp"
+                android:hint="카테고리를 입력하세요."
+                android:ems="10"
+                android:inputType="text"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/textHintColor"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/idText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="아이디"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/idEdit"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="5dp"
+                android:hint="아이디를 입력하세요."
+                android:ems="10"
+                android:inputType="text"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/textHintColor"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/pwText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="비밀번호"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/pwEdit"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="5dp"
+                android:hint="비밀번호를 입력하세요."
+                android:ems="10"
+                android:inputType="textPassword"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/textHintColor"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/memoText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="메모"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/memoEdit"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="5dp"
+                android:hint="간단한 메모를 입력하세요."
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/textHintColor"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/confirmBtn"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:text="카테고리"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:clickable="true"
+            android:contentDescription="@string/confirm"
+            android:focusable="true"
+            app:backgroundTint="@color/colorAccent"
+            app:fabSize="normal"
+            app:maxImageSize="28dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_baseline_check_24" />
 
-        <EditText
-            android:id="@+id/categoryEdit"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_margin="5dp"
-            android:hint="카테고리를 입력하세요."
-            android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/textHintColor"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <TextView
-            android:id="@+id/idText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:text="아이디"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/idEdit"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_margin="5dp"
-            android:hint="아이디를 입력하세요."
-            android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/textHintColor"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <TextView
-            android:id="@+id/pwText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:text="비밀번호"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/pwEdit"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_margin="5dp"
-            android:hint="비밀번호를 입력하세요."
-            android:ems="10"
-            android:inputType="textPassword"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/textHintColor"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <TextView
-            android:id="@+id/memoText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:text="메모"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/memoEdit"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_margin="5dp"
-            android:hint="간단한 메모를 입력하세요."
-            android:ems="10"
-            android:inputType="textMultiLine"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/textHintColor"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-    </LinearLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/confirmBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        android:clickable="true"
-        android:contentDescription="@string/confirm"
-        android:focusable="true"
-        app:backgroundTint="@color/colorAccent"
-        app:fabSize="normal"
-        app:maxImageSize="28dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_baseline_check_24" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

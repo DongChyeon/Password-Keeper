@@ -1,15 +1,16 @@
-package com.dongchyeon.passwordkeeper.view
+package com.dongchyeon.passwordkeeper.presentation.view
 
 import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.dongchyeon.passwordkeeper.R
-import com.dongchyeon.passwordkeeper.data.room.Memo
+import com.dongchyeon.passwordkeeper.data.model.Memo
 import com.dongchyeon.passwordkeeper.databinding.ActivityMemoEditBinding
+import com.dongchyeon.passwordkeeper.presentation.viewmodel.MemoViewModel
 import com.dongchyeon.passwordkeeper.util.AES256Chiper
-import com.dongchyeon.passwordkeeper.viewmodel.MemoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -22,9 +23,7 @@ class MemoEditActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMemoEditBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_memo_edit)
 
         init()
     }

@@ -1,12 +1,14 @@
-package com.dongchyeon.passwordkeeper.view
+package com.dongchyeon.passwordkeeper.presentation.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import com.dongchyeon.passwordkeeper.R
 import com.dongchyeon.passwordkeeper.databinding.ActivityRegisterBinding
-import com.dongchyeon.passwordkeeper.viewmodel.AuthViewModel
+import com.dongchyeon.passwordkeeper.presentation.viewmodel.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -17,9 +19,7 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRegisterBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_register)
 
         init()
     }
@@ -37,8 +37,8 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.confirmBtn.setOnClickListener {
             if (binding.newPassword.text.toString() == binding.confirmPassword.text.toString()) {
-                viewModel.prefPassword = binding.newPassword.text.toString()
-                viewModel.prefIsRegistered = true
+                viewModel.password = binding.newPassword.text.toString()
+                viewModel.isRegistered = true
 
                 if (type != "reset") {
                     Toast.makeText(applicationContext, "비밀번호가 설정되었습니다.", Toast.LENGTH_SHORT).show()

@@ -1,4 +1,4 @@
-package com.dongchyeon.passwordkeeper.view
+package com.dongchyeon.passwordkeeper.presentation.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
 import androidx.biometric.BiometricPrompt.PromptInfo
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
+import com.dongchyeon.passwordkeeper.R
 import com.dongchyeon.passwordkeeper.databinding.ActivityLoginBinding
-import com.dongchyeon.passwordkeeper.viewmodel.AuthViewModel
+import com.dongchyeon.passwordkeeper.presentation.viewmodel.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 import java.util.concurrent.Executor
@@ -24,9 +26,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
 
         init()
     }
@@ -42,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // 첫 실행이면은 RegisterActivity 로 전환
-        if (!viewModel.prefIsRegistered) {
+        if (!viewModel.isRegistered) {
             val intent = Intent(applicationContext, RegisterActivity::class.java)
             intent.putExtra("type", "register")
             startActivity(intent)
@@ -84,7 +84,7 @@ class LoginActivity : AppCompatActivity() {
 
         // prefs에 저장된 비밀번호(가입할 때 저장한 비밀번호)를 입력했을 시 로그인
         binding.loginBtn.setOnClickListener {
-            if (binding.inputPassword.text.toString() == viewModel.prefPassword) {
+            if (binding.inputPassword.text.toString() == viewModel.password) {
                 Toast.makeText(applicationContext, "인증 성공", Toast.LENGTH_SHORT).show()
                 if (type == "reset") {
                     val intent2 = Intent(applicationContext, RegisterActivity::class.java)

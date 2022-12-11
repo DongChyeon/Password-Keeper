@@ -1,4 +1,4 @@
-package com.dongchyeon.passwordkeeper.adapter
+package com.dongchyeon.passwordkeeper.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.dongchyeon.passwordkeeper.R
+import com.dongchyeon.passwordkeeper.data.model.Memo
 
-class CategoryAdapter : ListAdapter<String, CategoryAdapter.ViewHolder>(CategoryComparator()) {
+class MemoAdapter : ListAdapter<Memo, MemoAdapter.ViewHolder>(MemoComparator()) {
     private lateinit var listener: OnItemClickListener
 
     interface OnItemClickListener {
@@ -33,7 +34,7 @@ class CategoryAdapter : ListAdapter<String, CategoryAdapter.ViewHolder>(Category
         }
     }
 
-    fun getCategory(position: Int) : String {
+    fun getMemo(position: Int) : Memo {
         return getItem(position)
     }
 
@@ -44,23 +45,22 @@ class CategoryAdapter : ListAdapter<String, CategoryAdapter.ViewHolder>(Category
         companion object {
             fun create(parent: ViewGroup) : ViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.category_item, parent, false)
+                    .inflate(R.layout.memo, parent, false)
                 return ViewHolder(view)
             }
         }
 
-        fun bind(item: String) {
-            title.text = item
-            image.setImageResource(R.drawable.lock_icon)
+        fun bind(memo: Memo) {
+            title.text = memo.title
         }
     }
 
-    class CategoryComparator : DiffUtil.ItemCallback<String>() {
-        override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
-            return oldItem == newItem
+    class MemoComparator : DiffUtil.ItemCallback<Memo>() {
+        override fun areItemsTheSame(oldItem: Memo, newItem: Memo): Boolean {
+            return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+        override fun areContentsTheSame(oldItem: Memo, newItem: Memo): Boolean {
             return oldItem == newItem
         }
     }

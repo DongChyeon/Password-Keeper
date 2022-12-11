@@ -1,14 +1,16 @@
-package com.dongchyeon.passwordkeeper.view
+package com.dongchyeon.passwordkeeper.presentation.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dongchyeon.passwordkeeper.adapter.MemoAdapter
+import com.dongchyeon.passwordkeeper.R
 import com.dongchyeon.passwordkeeper.databinding.ActivityMemoListBinding
-import com.dongchyeon.passwordkeeper.viewmodel.MemoViewModel
+import com.dongchyeon.passwordkeeper.presentation.adapter.MemoAdapter
+import com.dongchyeon.passwordkeeper.presentation.viewmodel.MemoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -20,9 +22,7 @@ class MemoListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMemoListBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_memo_list)
 
         init()
     }
