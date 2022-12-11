@@ -4,25 +4,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dongchyeon.passwordkeeper.R
 import com.dongchyeon.passwordkeeper.databinding.ActivityMemoListBinding
 import com.dongchyeon.passwordkeeper.presentation.adapter.MemoAdapter
-import com.dongchyeon.passwordkeeper.presentation.viewmodel.MemoViewModel
+import com.dongchyeon.passwordkeeper.presentation.base.BaseActivity
+import com.dongchyeon.passwordkeeper.presentation.viewmodel.MemoListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 @AndroidEntryPoint
-class MemoListActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMemoListBinding
-    private val viewModel: MemoViewModel by viewModels()
+class MemoListActivity : BaseActivity<ActivityMemoListBinding>(R.layout.activity_memo_list) {
+    private val viewModel: MemoListViewModel by viewModels()
     private var category: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_memo_list)
 
         init()
     }
@@ -49,8 +46,8 @@ class MemoListActivity : AppCompatActivity() {
 
         adapter.setOnItemClickListener(object : MemoAdapter.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
-                val intent = Intent(applicationContext, MemoViewActivity::class.java)
-                intent.putExtra("memo", adapter.getMemo(position))
+                val intent = Intent(applicationContext, MemoDetailActivity::class.java)
+                intent.putExtra("memo", adapter.getMemo(position).id)
                 startActivity(intent)
             }
         })

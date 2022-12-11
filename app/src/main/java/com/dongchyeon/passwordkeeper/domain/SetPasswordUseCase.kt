@@ -6,6 +6,6 @@ import javax.inject.Inject
 class SetPasswordUseCase @Inject constructor(
     private val authRepository: AuthRepository
 ) {
-    operator fun invoke(password: String) =
-        authRepository.setPassword(password)
+    operator fun invoke(pw: String, confirmPw: String) =
+        authRepository.setPassword(pw, confirmPw)
 }

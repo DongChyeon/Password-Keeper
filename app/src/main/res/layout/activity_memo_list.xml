@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.dongchyeon.passwordkeeper.presentation.viewmodel.MemoViewModel" />
+            type="com.dongchyeon.passwordkeeper.presentation.viewmodel.MemoListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

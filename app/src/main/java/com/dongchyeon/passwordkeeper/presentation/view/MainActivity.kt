@@ -4,25 +4,21 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import com.dongchyeon.passwordkeeper.R
 import com.dongchyeon.passwordkeeper.databinding.ActivityMainBinding
 import com.dongchyeon.passwordkeeper.presentation.adapter.CategoryAdapter
+import com.dongchyeon.passwordkeeper.presentation.base.BaseActivity
 import com.dongchyeon.passwordkeeper.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.apply {
-            lifecycleOwner = this@MainActivity
+        bind {
             viewModel = mainViewModel
         }
 
@@ -36,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = CategoryAdapter()
         binding.viewPager.adapter = adapter
 
+        mainViewModel.loadAllCategories()
         mainViewModel.categories.observe(this) { categories ->
             categories.let { adapter.submitList(categories) }
             binding.statusMsg.text =

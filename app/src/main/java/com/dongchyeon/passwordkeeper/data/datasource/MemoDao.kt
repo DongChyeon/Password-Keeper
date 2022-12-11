@@ -1,6 +1,9 @@
 package com.dongchyeon.passwordkeeper.data.datasource
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
 import com.dongchyeon.passwordkeeper.data.model.Memo
 import kotlinx.coroutines.flow.Flow
 
@@ -12,8 +15,15 @@ interface MemoDao {
     @Insert
     suspend fun insertMemo(memo: Memo)
 
-    @Update
-    suspend fun updateMemo(memo: Memo)
+    @Query("UPDATE Memos SET title = :title, category = :category, uid = :uid, password = :password, memo = :memo WHERE id = :id")
+    suspend fun updateMemoById(
+        id: Long,
+        title: String,
+        category: String,
+        uid: String,
+        password: String,
+        memo: String
+    )
 
     @Delete
     suspend fun deleteMemo(memo: Memo)

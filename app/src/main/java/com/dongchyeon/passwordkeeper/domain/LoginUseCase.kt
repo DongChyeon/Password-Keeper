@@ -2,9 +2,9 @@ package com.dongchyeon.passwordkeeper.domain
 
 import com.dongchyeon.passwordkeeper.data.repository.AuthRepository
 
-class GetPasswordUseCase constructor(
+class LoginUseCase constructor(
     private val authRepository: AuthRepository
 ) {
-    operator fun invoke() =
-        authRepository.getPassword()
+    operator fun invoke(password: String) =
+        authRepository.login(password)
 }

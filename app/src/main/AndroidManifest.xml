@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".presentation.view.MainActivity" />
-        <activity android:name=".presentation.view.MemoViewActivity" />
+        <activity android:name=".presentation.view.MemoDetailActivity" />
         <activity android:name=".presentation.view.MemoEditActivity" />
         <activity android:name=".presentation.view.RegisterActivity" />
         <activity

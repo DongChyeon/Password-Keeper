@@ -49,8 +49,8 @@ object UseCaseModule {
 
     @Provides
     @Singleton
-    fun providesGetPasswordUseCase(authRepository: AuthRepository): GetPasswordUseCase =
-        GetPasswordUseCase(authRepository)
+    fun providesLoginUseCase(authRepository: AuthRepository): LoginUseCase =
+        LoginUseCase(authRepository)
 
     @Provides
     @Singleton
@@ -61,9 +61,4 @@ object UseCaseModule {
     @Singleton
     fun providesGetIsRegisteredUseCase(authRepository: AuthRepository): GetIsRegisteredUseCase =
         GetIsRegisteredUseCase(authRepository)
-
-    @Provides
-    @Singleton
-    fun providesSetIsRegisteredUseCase(authRepository: AuthRepository): SetIsRegisteredUseCase =
-        SetIsRegisteredUseCase(authRepository)
 }
