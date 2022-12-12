@@ -3,16 +3,19 @@ package com.dongchyeon.passwordkeeper.data.repository
 import com.dongchyeon.passwordkeeper.data.Task
 import com.dongchyeon.passwordkeeper.data.datasource.MemoDataSource
 import com.dongchyeon.passwordkeeper.data.model.Memo
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MemoRepository @Inject constructor(
     private val memoDataSource: MemoDataSource
 ) {
-    fun getAllMemos() =
-        memoDataSource.getAllMemos()
+    fun getAllMemos(): Flow<Task<List<Memo>>> {
+        return memoDataSource.getAllMemos()
+    }
 
-    fun getMemoById(id: Long) =
-        memoDataSource.getMemoById(id)
+    suspend fun getMemoById(id: Long): Task<Memo> {
+        return memoDataSource.getMemoById(id)
+    }
 
     suspend fun insertMemo(
         title: String,
@@ -20,7 +23,7 @@ class MemoRepository @Inject constructor(
         uid: String,
         password: String,
         memo: String
-    ): Task<String> {
+    ): Task<Long> {
         return if (category == "전체보기") {
             Task.Error(Exception("불가능한 카테고리명입니다"))
         } else if (title == "") {
@@ -33,7 +36,6 @@ class MemoRepository @Inject constructor(
             Task.Error(Exception("비밀번호는 필수 입력 항목입니다"))
         } else {
             memoDataSource.insertMemo(Memo(title, category, uid, password, memo))
-            Task.Success("추가되었습니다")
         }
     }
 
@@ -61,12 +63,15 @@ class MemoRepository @Inject constructor(
         }
     }
 
-    suspend fun deleteMemo(memo: Memo) =
+    suspend fun deleteMemo(memo: Memo) {
         memoDataSource.deleteMemo(memo)
+    }
 
-    fun getMemosByCategory(category: String) =
-        memoDataSource.getMemosByCategory(category)
+    fun getMemosByCategory(category: String): Flow<Task<List<Memo>>> {
+        return memoDataSource.getMemosByCategory(category)
+    }
 
-    fun getAllCategories() =
-        memoDataSource.getAllCategories()
+    fun getAllCategories(): Flow<Task<List<String>>> {
+        return memoDataSource.getAllCategories()
+    }
 }

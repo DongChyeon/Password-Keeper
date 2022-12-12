@@ -25,6 +25,7 @@ class AuthRepository @Inject constructor(
         }
     }
 
-    fun getIsRegistered() =
-        authDataSource.getIsRegistered()
+    fun getIsRegistered(): Boolean {
+        return authDataSource.getIsRegistered()
+    }
 }

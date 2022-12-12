@@ -32,26 +32,31 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun providesMemoDao(appDatabase: AppDatabase): MemoDao =
-        appDatabase.memosDao()
+    fun providesMemoDao(appDatabase: AppDatabase): MemoDao {
+        return appDatabase.memosDao()
+    }
 
     @Provides
     @Singleton
-    fun providesMemoDataSource(memoDao: MemoDao): MemoDataSource =
-        MemoDataSource(memoDao)
+    fun providesMemoDataSource(memoDao: MemoDao): MemoDataSource {
+        return MemoDataSource(memoDao)
+    }
 
     @Provides
     @Singleton
-    fun providesAuthDataSource(@ApplicationContext context: Context): AuthDataSource =
-        AuthDataSource(context)
+    fun providesAuthDataSource(@ApplicationContext context: Context): AuthDataSource {
+        return AuthDataSource(context)
+    }
 
     @Provides
     @Singleton
-    fun providesMemoRepository(memoDataSource: MemoDataSource): MemoRepository =
-        MemoRepository(memoDataSource)
+    fun providesMemoRepository(memoDataSource: MemoDataSource): MemoRepository {
+        return MemoRepository(memoDataSource)
+    }
 
     @Provides
     @Singleton
-    fun providesAuthRepository(authDataSource: AuthDataSource): AuthRepository =
-        AuthRepository(authDataSource)
+    fun providesAuthRepository(authDataSource: AuthDataSource): AuthRepository {
+        return AuthRepository(authDataSource)
+    }
 }

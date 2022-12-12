@@ -7,14 +7,14 @@
 
         <variable
             name="viewModel"
-            type="com.dongchyeon.passwordkeeper.presentation.viewmodel.MemoListViewModel" />
+            type="com.dongchyeon.passwordkeeper.presentation.viewmodel.MemoEditViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".presentation.view.MemoEditActivity">
+        tools:context=".presentation.view.MemoEditFragment">
 
         <LinearLayout
             android:id="@+id/linearLayout"

@@ -1,5 +1,6 @@
 package com.dongchyeon.passwordkeeper.domain
 
+import com.dongchyeon.passwordkeeper.data.Task
 import com.dongchyeon.passwordkeeper.data.repository.MemoRepository
 import javax.inject.Inject
 
@@ -13,12 +14,14 @@ class UpdateMemoUseCase @Inject constructor(
         uid: String,
         password: String,
         memoTxt: String
-    ) = memoRepository.updateMemo(
-        id,
-        title,
-        category,
-        uid,
-        password,
-        memoTxt
-    )
+    ): Task<String> {
+        return memoRepository.updateMemo(
+            id,
+            title,
+            category,
+            uid,
+            password,
+            memoTxt
+        )
+    }
 }

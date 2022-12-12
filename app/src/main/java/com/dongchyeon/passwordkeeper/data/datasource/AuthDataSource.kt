@@ -8,22 +8,26 @@ class AuthDataSource @Inject constructor(
 ) {
     private val pref = context.getSharedPreferences("pref", Context.MODE_PRIVATE)
 
-    fun getPassword(): String =
-        pref.getString("password", "").toString()
+    fun getPassword(): String {
+        return pref.getString("password", "").toString()
+    }
 
-    fun setPassword(password: String) =
+    fun setPassword(password: String) {
         pref.edit().let {
             it.putString("password", password)
             it.apply()
         }
+    }
 
-    fun getIsRegistered(): Boolean =
-        pref.getBoolean("isRegistered", false)
+    fun getIsRegistered(): Boolean {
+        return pref.getBoolean("isRegistered", false)
+    }
 
-    fun setIsRegistered(isRegistered: Boolean) =
+
+    fun setIsRegistered(isRegistered: Boolean) {
         pref.edit().let {
             it.putBoolean("isRegistered", isRegistered)
             it.apply()
         }
-
+    }
 }

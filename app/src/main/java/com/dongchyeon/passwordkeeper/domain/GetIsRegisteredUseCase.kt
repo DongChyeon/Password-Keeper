@@ -6,6 +6,7 @@ import javax.inject.Inject
 class GetIsRegisteredUseCase @Inject constructor(
     private val authRepository: AuthRepository
 ) {
-    operator fun invoke() =
-        authRepository.getIsRegistered()
+    operator fun invoke(): Boolean {
+        return authRepository.getIsRegistered()
+    }
 }

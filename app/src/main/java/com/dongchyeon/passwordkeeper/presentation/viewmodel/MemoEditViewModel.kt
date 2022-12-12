@@ -9,6 +9,7 @@ import com.dongchyeon.passwordkeeper.domain.GetMemoByIdUseCase
 import com.dongchyeon.passwordkeeper.domain.InsertMemoUseCase
 import com.dongchyeon.passwordkeeper.domain.UpdateMemoUseCase
 import com.dongchyeon.passwordkeeper.presentation.base.BaseViewModel
+import com.dongchyeon.passwordkeeper.util.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,19 +20,23 @@ class MemoEditViewModel @Inject constructor(
     private val insertMemoUseCase: InsertMemoUseCase,
     private val updateMemoUseCase: UpdateMemoUseCase
 ) : BaseViewModel() {
-    private lateinit var memoItem: Memo
+    private var memoItem: Memo = Memo("", "", "", "", "")
     private val _memo = MutableLiveData<Memo>()
     val memo: LiveData<Memo> get() = _memo
 
-    private val _isUpserted = MutableLiveData<Boolean>(false)
-    val isUpserted: LiveData<Boolean> get() = _isUpserted
+    private val _insertedId = MutableLiveData<Event<Long>>(Event(-1L))
+    val insertedId: LiveData<Event<Long>> get() = _insertedId
+    private val _isUpdated = MutableLiveData<Event<Boolean>>(Event(false))
+    val isUpdated: LiveData<Event<Boolean>> get() = _isUpdated
 
     fun loadMemo(id: Long) = viewModelScope.launch {
-        getMemoByIdUseCase(id).collect {
-            if (it is Task.Success<Memo>) {
-                memoItem = it.data
-                _memo.postValue(memoItem)
-            }
+        val memo = getMemoByIdUseCase(id)
+        if (memo is Task.Success<Memo>) {
+            memoItem = memo.data
+            _memo.postValue(memoItem)
+        } else {
+            memoItem = Memo("", "", "", "", "")
+            _memo.postValue(memoItem)
         }
     }
 
@@ -49,9 +54,9 @@ class MemoEditViewModel @Inject constructor(
             password,
             memoTxt
         )
-        if (task is Task.Success<String>) {
-            _toastMessage.postValue(task.data)
-            _isUpserted.postValue(true)
+        if (task is Task.Success<Long>) {
+            _toastMessage.postValue("추가되었습니다")
+            _insertedId.value = Event(task.data)
         } else if (task is Task.Error) {
             _toastMessage.postValue(task.exception.message)
         }
@@ -75,7 +80,7 @@ class MemoEditViewModel @Inject constructor(
         )
         if (task is Task.Success) {
             _toastMessage.postValue(task.data)
-            _isUpserted.postValue(true)
+            _isUpdated.value = Event(true)
         } else if (task is Task.Error) {
             _toastMessage.postValue(task.exception.message)
         }

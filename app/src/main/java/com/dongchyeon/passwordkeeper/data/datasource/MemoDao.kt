@@ -13,7 +13,7 @@ interface MemoDao {
     fun getAllMemos(): Flow<List<Memo>>
 
     @Insert
-    suspend fun insertMemo(memo: Memo)
+    suspend fun insertMemo(memo: Memo): Long
 
     @Query("UPDATE Memos SET title = :title, category = :category, uid = :uid, password = :password, memo = :memo WHERE id = :id")
     suspend fun updateMemoById(
@@ -29,7 +29,7 @@ interface MemoDao {
     suspend fun deleteMemo(memo: Memo)
 
     @Query("SELECT * FROM Memos WHERE id = :id")
-    fun getMemoById(id: Long): Flow<Memo>
+    fun getMemoById(id: Long): Memo?
 
     @Query("SELECT * FROM Memos WHERE category = :category")
     fun getMemosByCategory(category: String): Flow<List<Memo>>

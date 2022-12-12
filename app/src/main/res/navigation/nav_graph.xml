@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_login">
+
+    <fragment
+        android:id="@+id/fragment_login"
+        android:name="com.dongchyeon.passwordkeeper.presentation.view.LoginFragment"
+        android:label="로그인"
+        tools:layout="@layout/fragment_login">
+        <argument
+            android:name="type"
+            app:argType="string"
+            android:defaultValue="login" />
+        <action
+            android:id="@+id/action_fragment_login_to_fragment_category"
+            app:destination="@id/fragment_category"
+            app:popUpTo="@id/fragment_login"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_fragment_login_to_fragment_register"
+            app:destination="@id/fragment_register"
+            app:popUpTo="@id/fragment_login"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_register"
+        android:name="com.dongchyeon.passwordkeeper.presentation.view.RegisterFragment"
+        android:label="비밀번호 설정"
+        tools:layout="@layout/fragment_register">
+        <argument
+            android:name="type"
+            app:argType="string"
+            android:defaultValue="register" />
+        <action
+            android:id="@+id/action_fragment_register_to_fragment_category"
+            app:destination="@id/fragment_category"
+            app:popUpTo="@id/fragment_register"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_fragment_reset_to_fragment_category"
+            app:destination="@id/fragment_category"
+            app:popUpTo="@id/fragment_category"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_category"
+        android:name="com.dongchyeon.passwordkeeper.presentation.view.CategoryFragment"
+        android:label="카테고리"
+        tools:layout="@layout/fragment_category">
+        <action
+            android:id="@+id/action_fragment_category_to_fragment_memo_list"
+            app:destination="@id/fragment_memo_list">
+            <argument
+                android:name="category"
+                app:argType="string" />
+        </action>
+
+        <action
+            android:id="@+id/action_fragment_category_to_fragment_login"
+            app:destination="@id/fragment_login">
+            <argument
+                android:name="type"
+                app:argType="string" />
+        </action>
+        <action
+            android:id="@+id/action_fragment_category_to_fragment_memo_edit"
+            app:destination="@id/fragment_memo_edit">
+            <argument
+                android:name="type"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_memo_list"
+        android:name="com.dongchyeon.passwordkeeper.presentation.view.MemoListFragment"
+        android:label="카테고리"
+        tools:layout="@layout/fragment_memo_list">
+        <argument
+            android:name="category"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_fragment_memo_list_to_fragment_memo_detail"
+            app:destination="@id/fragment_memo_detail">
+            <argument
+                android:name="memoId"
+                app:argType="long" />
+        </action>
+        <action
+            android:id="@+id/action_fragment_memo_list_to_fragment_memo_edit"
+            app:destination="@id/fragment_memo_edit">
+            <argument
+                android:name="type"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_memo_detail"
+        android:name="com.dongchyeon.passwordkeeper.presentation.view.MemoDetailFragment"
+        android:label="메모 상세보기"
+        tools:layout="@layout/fragment_memo_detail">
+        <argument
+            android:name="memoId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_fragment_memo_detail_to_fragment_memo_edit"
+            app:destination="@id/fragment_memo_edit">
+            <argument
+                android:name="type"
+                app:argType="string" />
+            <argument
+                android:name="memoId"
+                app:argType="long" />
+        </action>
+        <action
+            android:id="@+id/action_fragment_memo_detail_to_fragment_category"
+            app:destination="@id/fragment_category"
+            app:popUpTo="@id/fragment_category"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_memo_edit"
+        android:name="com.dongchyeon.passwordkeeper.presentation.view.MemoEditFragment"
+        android:label="메모 수정하기"
+        tools:layout="@layout/fragment_memo_edit">
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="memoId"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <action
+            android:id="@+id/action_fragment_memo_edit_to_fragment_memo_detail"
+            app:destination="@id/fragment_memo_detail"
+            app:popUpTo="@id/fragment_category" />
+    </fragment>
+
+</navigation>
