@@ -1,5 +1,6 @@
 package com.dongchyeon.passwordkeeper.data.repository
 
+import androidx.paging.PagingData
 import com.dongchyeon.passwordkeeper.data.Task
 import com.dongchyeon.passwordkeeper.data.datasource.MemoDataSource
 import com.dongchyeon.passwordkeeper.data.model.Memo
@@ -7,8 +8,16 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MemoRepository @Inject constructor(
-    private val memoDataSource: MemoDataSource
+    private val memoDataSource: MemoDataSource,
 ) {
+    fun getPagedMemos(): Flow<PagingData<Memo>> {
+        return memoDataSource.getPagedMemos()
+    }
+
+    fun getPagedMemosByCategory(category: String): Flow<PagingData<Memo>> {
+        return memoDataSource.getPagedMemosByCategory(category)
+    }
+
     fun getAllMemos(): Flow<Task<List<Memo>>> {
         return memoDataSource.getAllMemos()
     }

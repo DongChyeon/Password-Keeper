@@ -3,6 +3,7 @@ package com.dongchyeon.passwordkeeper.presentation.view
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
@@ -13,6 +14,7 @@ import com.dongchyeon.passwordkeeper.presentation.adapter.MemoAdapter
 import com.dongchyeon.passwordkeeper.presentation.base.BaseFragment
 import com.dongchyeon.passwordkeeper.presentation.viewmodel.MemoListViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MemoListFragment : BaseFragment<FragmentMemoListBinding>(R.layout.fragment_memo_list) {
@@ -36,24 +38,21 @@ class MemoListFragment : BaseFragment<FragmentMemoListBinding>(R.layout.fragment
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         val adapter = MemoAdapter()
-        // 전체 보기가 아닐 경우 카테고리에 따른 아이템을 보여줌
-        if (category == "전체 보기") {
-            memoListViewModel.loadAllMemos()
-        } else {
-            memoListViewModel.loadMemosByCategory(category)
-        }
         binding.recyclerView.adapter = adapter
 
+        memoListViewModel.setCategory(category)
         memoListViewModel.memos.observe(requireActivity()) { memos ->
             if (!isAdded) return@observe
-            memos.let { adapter.submitList(memos) }
+            lifecycleScope.launch {
+                memos.let { adapter.submitData(memos) }
+            }
         }
 
         adapter.setOnItemClickListener(object : MemoAdapter.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
                 val action =
                     MemoListFragmentDirections
-                        .actionFragmentMemoListToFragmentMemoDetail(adapter.getMemo(position).id)
+                        .actionFragmentMemoListToFragmentMemoDetail(adapter.getMemo(position)!!.id)
                 navController.navigate(action)
             }
         })

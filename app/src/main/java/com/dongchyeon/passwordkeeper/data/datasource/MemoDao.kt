@@ -36,4 +36,10 @@ interface MemoDao {
 
     @Query("SELECT DISTINCT category FROM Memos")
     fun getAllCategories(): Flow<List<String>>
+
+    @Query("SELECT * FROM Memos LIMIT :limit OFFSET :offset")
+    suspend fun getPagedMemos(limit: Int, offset: Int): List<Memo>
+
+    @Query("SELECT * FROM Memos WHERE category = :category LIMIT :limit OFFSET :offset")
+    suspend fun getPagedMemosByCategory(category: String, limit: Int, offset: Int): List<Memo>
 }

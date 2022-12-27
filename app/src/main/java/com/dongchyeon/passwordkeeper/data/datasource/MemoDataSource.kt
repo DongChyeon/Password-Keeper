@@ -1,5 +1,9 @@
 package com.dongchyeon.passwordkeeper.data.datasource
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import com.dongchyeon.passwordkeeper.data.MemoPagingSource
 import com.dongchyeon.passwordkeeper.data.Task
 import com.dongchyeon.passwordkeeper.data.model.Memo
 import kotlinx.coroutines.CoroutineDispatcher
@@ -13,6 +17,26 @@ class MemoDataSource @Inject constructor(
     private val memoDao: MemoDao,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
+    fun getPagedMemos(): Flow<PagingData<Memo>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 20,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { MemoPagingSource(memoDao, null) }
+        ).flow
+    }
+
+    fun getPagedMemosByCategory(category: String): Flow<PagingData<Memo>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 20,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { MemoPagingSource(memoDao, category) }
+        ).flow
+    }
+
     fun getAllMemos(): Flow<Task<List<Memo>>> {
         return memoDao.getAllMemos().map {
             Task.Success(it)
